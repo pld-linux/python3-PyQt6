@@ -13,17 +13,34 @@ License:	GPL v2 or GPL v3 with FLOSS exception
 Group:		Libraries/Python
 Source0:	http://downloads.sourceforge.net/pyqt/PyQt-gpl-%{version}.tar.gz
 # Source0-md5:	81ef608fa4f3961918106d0ca07aa68a
+Patch0:		printsupport.patch
 URL:		http://www.riverbankcomputing.com/software/pyqt/
 # most of BR comes from configure.py
+BuildRequires:	Qt5Bluetooth-devel >= %{qt_ver}
 BuildRequires:	Qt5Core-devel >= %{qt_ver}
 BuildRequires:	Qt5DBus-devel >= %{qt_ver}
+BuildRequires:	Qt5Designer-devel >= %{qt_ver}
 BuildRequires:	Qt5Gui-devel >= %{qt_ver}
+BuildRequires:	Qt5Help-devel >= %{qt_ver}
+BuildRequires:	Qt5Multimedia-devel >= %{qt_ver}
+BuildRequires:	Qt5MultimediaWidgets-devel >= %{qt_ver}
 BuildRequires:	Qt5Network-devel >= %{qt_ver}
 BuildRequires:	Qt5OpenGL-devel >= %{qt_ver}
+BuildRequires:	Qt5Positioning-devel >= %{qt_ver}
 BuildRequires:	Qt5PrintSupport-devel >= %{qt_ver}
+BuildRequires:	Qt5Qml-devel >= %{qt_ver}
+BuildRequires:	Qt5Quick-devel >= %{qt_ver}
+BuildRequires:	Qt5Sensors-devel >= %{qt_ver}
+BuildRequires:	Qt5SerialPort-devel >= %{qt_ver}
 BuildRequires:	Qt5Sql-devel >= %{qt_ver}
+BuildRequires:	Qt5Svg-devel >= %{qt_ver}
 BuildRequires:	Qt5Test-devel >= %{qt_ver}
+BuildRequires:	Qt5WebKit-devel >= %{qt_ver}
+BuildRequires:	Qt5WebSockets-devel >= %{qt_ver}
+BuildRequires:	Qt5Widgets-devel >= %{qt_ver}
+BuildRequires:	Qt5X11Extras-devel >= %{qt_ver}
 BuildRequires:	Qt5Xml-devel >= %{qt_ver}
+BuildRequires:	Qt5XmlPatterns-devel >= %{qt_ver}
 BuildRequires:	phonon-devel
 BuildRequires:	pkgconfig
 BuildRequires:	python-dbus-devel >= 0.80
@@ -112,13 +129,12 @@ kodu wykorzystującego PyQt5.
 
 %prep
 %setup -q -n PyQt-gpl-%{version}
-%{__sed} -i 's,pyuic.py,pyuic.pyc,' configure.py
-# small hack to build for shared libs - symbol QT_SHARED not defined anymore?
-%{__sed} -i 's/qt_shared = lines\[.*\]/qt_shared = "y"/' configure.py
-%{__sed} -i 's/resp = sys.stdin.readline.*/resp = "yes"/' configure.py
+%patch0 -p1
 
 %build
 %{__python} configure.py \
+	 --verbose \
+	--assume-shared \
 	--confirm-license \
 	-c -j 3 \
 	-a \
@@ -160,6 +176,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc NEWS README
 %attr(755,root,root) %{_libdir}/qt5/plugins/designer/libpyqt5.so
+%dir %{_libdir}/qt5/plugins/PyQt5
+%attr(755,root,root) %{_libdir}/qt5/plugins/PyQt5/libpyqt5qmlplugin.so
 %dir %{py_sitedir}/PyQt5
 %attr(755,root,root) %{py_sitedir}/PyQt5/Qt.so
 %attr(755,root,root) %{py_sitedir}/PyQt5/QtCore.so
@@ -173,6 +191,22 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{py_sitedir}/PyQt5/QtTest.so
 %attr(755,root,root) %{py_sitedir}/PyQt5/QtWidgets.so
 %attr(755,root,root) %{py_sitedir}/PyQt5/_QOpenGLFunctions_2_0.so
+%attr(755,root,root) %{py_sitedir}/PyQt5/QtBluetooth.so
+%attr(755,root,root) %{py_sitedir}/PyQt5/QtMultimedia.so
+%attr(755,root,root) %{py_sitedir}/PyQt5/QtMultimediaWidgets.so
+%attr(755,root,root) %{py_sitedir}/PyQt5/QtPositioning.so
+%attr(755,root,root) %{py_sitedir}/PyQt5/QtPrintSupport.so
+%attr(755,root,root) %{py_sitedir}/PyQt5/QtQml.so
+%attr(755,root,root) %{py_sitedir}/PyQt5/QtQuick.so
+%attr(755,root,root) %{py_sitedir}/PyQt5/QtQuickWidgets.so
+%attr(755,root,root) %{py_sitedir}/PyQt5/QtSensors.so
+%attr(755,root,root) %{py_sitedir}/PyQt5/QtSerialPort.so
+%attr(755,root,root) %{py_sitedir}/PyQt5/QtSvg.so
+%attr(755,root,root) %{py_sitedir}/PyQt5/QtWebKit.so
+%attr(755,root,root) %{py_sitedir}/PyQt5/QtWebKitWidgets.so
+%attr(755,root,root) %{py_sitedir}/PyQt5/QtWebSockets.so
+%attr(755,root,root) %{py_sitedir}/PyQt5/QtX11Extras.so
+%attr(755,root,root) %{py_sitedir}/PyQt5/QtXmlPatterns.so
 %{py_sitedir}/PyQt5/__init__.py[co]
 %attr(755,root,root) %{py_sitedir}/dbus/mainloop/pyqt5.so
 
