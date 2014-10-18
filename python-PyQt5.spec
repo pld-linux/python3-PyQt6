@@ -8,7 +8,7 @@ Summary:	Python bindings for the Qt4 toolkit
 Summary(pl.UTF-8):	Dowiązania do toolkitu Qt4 dla Pythona
 Name:		python-%{module}
 Version:	5.3.2
-Release:	1
+Release:	2
 License:	GPL v2 or GPL v3 with FLOSS exception
 Group:		Libraries/Python
 Source0:	http://downloads.sourceforge.net/pyqt/PyQt-gpl-%{version}.tar.gz
@@ -227,4 +227,5 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n qscintilla2-%{module}-api
 %defattr(644,root,root,755)
+%dir %{_datadir}/qt5/qsci/api/python
 %{_datadir}/qt5/qsci/api/python/PyQt5.api
