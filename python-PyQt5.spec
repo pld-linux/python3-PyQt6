@@ -20,6 +20,7 @@ BuildRequires:	Qt5DBus-devel >= %{qt_ver}
 BuildRequires:	Qt5Gui-devel >= %{qt_ver}
 BuildRequires:	Qt5Network-devel >= %{qt_ver}
 BuildRequires:	Qt5OpenGL-devel >= %{qt_ver}
+BuildRequires:	Qt5PrintSupport-devel >= %{qt_ver}
 BuildRequires:	Qt5Sql-devel >= %{qt_ver}
 BuildRequires:	Qt5Test-devel >= %{qt_ver}
 BuildRequires:	Qt5Xml-devel >= %{qt_ver}
