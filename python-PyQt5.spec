@@ -14,7 +14,7 @@ Summary:	Python 2 bindings for the Qt5 toolkit
 Summary(pl.UTF-8):	Wiązania Pythona 2 do toolkitu Qt5
 Name:		python-%{module}
 Version:	5.3.2
-Release:	3
+Release:	4
 License:	GPL v3
 Group:		Libraries/Python
 Source0:	http://downloads.sourceforge.net/pyqt/PyQt-gpl-%{version}.tar.gz
@@ -64,17 +64,25 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 PyQt5 is a set of Python bindings for the Qt5 toolkit. The bindings
-are implemented as a set of Python modules: QtCore, QtDeclarative,
-QtDesigner, QtGui, QtHelp, QtMultimedia, QtNetwork, QtOpenGL,
-QtScript, QtScriptTools, QtSql, QtSvg, QtTest, QtWebKit, QtXml,
-QtXmlPatterns and phonon XXX FIXME.
+are implemented as a set of Python modules: Enginio, Qt, QtBluetooth,
+QtCore, QtDBus, QtDesigner, QtGui, QtHelp, QtMultimedia,
+QtMultimediaWidgets, QtNetwork, QtOpenGL, QtPositioning,
+QtPrintSupport, QtQml, QtQuick, QtQuickWidgets, QtSensors,
+QtSerialPort, QtSql, QtSvg, QtTest, QtWebKit, QtWebKitWidgets,
+QtWebSockets, QtX11Extras and QtXmlPatterns.
+
+This package contains Python 2 modules.
 
 %description -l pl.UTF-8
 PyQt5 to zbiór dowiązań do Qt5 dla Pythona. Dowiązania zostały
-zaimplementowane jako moduły Pythona: QtCore, QtDeclarative,
-QtDesigner, QtGui, QtHelp, QtMultimedia, QtNetwork, QtOpenGL,
-QtScript, QtScriptTools, QtSql, QtSvg, QtTest, QtWebKit, QtXml,
-QtXmlPatterns oraz phonon XXX FIXME.
+zaimplementowane jako moduły Pythona: Enginio, Qt, QtBluetooth,
+QtCore, QtDBus, QtDesigner, QtGui, QtHelp, QtMultimedia,
+QtMultimediaWidgets, QtNetwork, QtOpenGL, QtPositioning,
+QtPrintSupport, QtQml, QtQuick, QtQuickWidgets, QtSensors,
+QtSerialPort, QtSql, QtSvg, QtTest, QtWebKit, QtWebKitWidgets,
+QtWebSockets, QtX11Extras oraz QtXmlPatterns.
+
+Ten pakiet zawiera moduły Pythona 2.
 
 %package uic
 Summary:	pyuic5 development tool for Python 2
@@ -89,18 +97,34 @@ pyuic5 development tool for Python 2.
 Narzędzie programistyczne pyuic5 dla Pythona 2.
 
 %package -n python3-PyQt5
-Summary:	Python 2 bindings for the Qt5 toolkit
-Summary(pl.UTF-8):	Wiązania Pythona 2 do toolkitu Qt5
+Summary:	Python 3 bindings for the Qt5 toolkit
+Summary(pl.UTF-8):	Wiązania Pythona 3 do toolkitu Qt5
 Group:		Libraries/Python
 Requires:	python3-libs
 Requires:	python3-dbus >= 0.80
 Requires:	python3-sip >= %{sip_ver}
 
 %description -n python3-PyQt5
-TODO
+PyQt5 is a set of Python bindings for the Qt5 toolkit. The bindings
+are implemented as a set of Python modules: Enginio, Qt, QtBluetooth,
+QtCore, QtDBus, QtDesigner, QtGui, QtHelp, QtMultimedia,
+QtMultimediaWidgets, QtNetwork, QtOpenGL, QtPositioning,
+QtPrintSupport, QtQml, QtQuick, QtQuickWidgets, QtSensors,
+QtSerialPort, QtSql, QtSvg, QtTest, QtWebKit, QtWebKitWidgets,
+QtWebSockets, QtX11Extras and QtXmlPatterns.
+
+This package contains Python 3 modules.
 
 %description -n python3-PyQt5 -l pl.UTF-8
-TODO
+PyQt5 to zbiór dowiązań do Qt5 dla Pythona. Dowiązania zostały
+zaimplementowane jako moduły Pythona: Enginio, Qt, QtBluetooth,
+QtCore, QtDBus, QtDesigner, QtGui, QtHelp, QtMultimedia,
+QtMultimediaWidgets, QtNetwork, QtOpenGL, QtPositioning,
+QtPrintSupport, QtQml, QtQuick, QtQuickWidgets, QtSensors,
+QtSerialPort, QtSql, QtSvg, QtTest, QtWebKit, QtWebKitWidgets,
+QtWebSockets, QtX11Extras oraz QtXmlPatterns.
+
+Ten pakiet zawiera moduły Pythona 3.
 
 %package -n python3-PyQt5-uic
 Summary:	pyuic5 development tool for Python 3
@@ -113,24 +137,6 @@ pyuic5 development tool for Python 3.
 
 %description -n python3-PyQt5-uic -l pl.UTF-8
 Narzędzie programistyczne pyuic5 dla Pythona 3.
-
-%package devel
-Summary:	SIP files needed to build other bindings based on Qt5
-Summary(pl.UTF-8):	Pliki SIP potrzebne do budowania innych wiązań opartych na Qt5
-Group:		Development/Languages/Python
-Requires:	sip >= %{sip_ver}
-
-%description devel
-SIP files needed to build other bindings for C++ classes that inherit
-from any of the Qt5 classes (e.g. KDE or your own).
-
-Note: this package doesn't depend on Python version.
-
-%description devel -l pl.UTF-8
-Pliki SIP potrzebne do budowania innych wiązań do klas C++
-dziedziczących z dowolnej klasy Qt5 (np. KDE lub własnych).
-
-Uwaga: ten pakiet nie jest zależny od wersji Pythona.
 
 %package devel-tools
 Summary:	PyQt5 development tools
@@ -161,6 +167,21 @@ Examples code demonstrating how to use the Python bindings for Qt5.
 %description examples -l pl.UTF-8
 Przykładowy kod demonstrujący jak używać PyQt5.
 
+%package -n sip-PyQt5
+Summary:	SIP files needed to build other bindings based on Qt5
+Summary(pl.UTF-8):	Pliki SIP potrzebne do budowania innych wiązań opartych na Qt5
+Group:		Development/Languages/Python
+Requires:	sip >= %{sip_ver}
+Obsoletes:	python-PyQt5-devel < 5.3.2-4
+
+%description -n sip-PyQt5
+SIP files needed to build other bindings for C++ classes that inherit
+from any of the Qt5 classes (e.g. KDE or your own).
+
+%description -n sip-PyQt5 -l pl.UTF-8
+Pliki SIP potrzebne do budowania innych wiązań do klas C++
+dziedziczących z dowolnej klasy Qt5 (np. KDE lub własnych).
+
 %package -n Qt5Designer-plugin-pyqt5
 Summary:	Qt5 Designer plugin for Python plugins with widgets
 Summary(pl.UTF-8):	Wtyczka Qt5 Designera dla wtyczek Pythona zawierających widgety
@@ -184,7 +205,7 @@ Designera.
 Summary:	PyQt5 API file for QScintilla
 Summary(pl.UTF-8):	Plik API PyQt5 dla QScintilli
 Group:		Libraries/Python
-Requires:	python-qscintilla2 >= 2.2-2
+Requires:	qscintilla2-qt5 >= 2.2-2
 
 %description -n qscintilla2-%{module}-api
 PyQt5 API file can be used by the QScintilla editor component to
@@ -369,10 +390,6 @@ rm -rf $RPM_BUILD_ROOT
 %{py3_sitedir}/PyQt5/uic
 %endif
 
-%files devel
-%defattr(644,root,root,755)
-%{_sipfilesdir}/PyQt5
-
 %files devel-tools
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/pylupdate5
@@ -382,11 +399,14 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{_examplesdir}/%{name}-%{version}
 
+%files -n sip-PyQt5
+%defattr(644,root,root,755)
+%{_sipfilesdir}/PyQt5
+
 %files -n Qt5Designer-plugin-pyqt5
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/qt5/plugins/designer/libpyqt5.so
 
 %files -n qscintilla2-%{module}-api
 %defattr(644,root,root,755)
-%dir %{_datadir}/qt5/qsci/api/python
 %{_datadir}/qt5/qsci/api/python/PyQt5.api
