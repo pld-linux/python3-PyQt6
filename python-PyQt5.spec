@@ -6,20 +6,19 @@
 
 %define		module	PyQt5
 # minimal required sip version
-%define		sip_ver	2:4.16
+%define		sip_ver	2:4.16.6
 # last qt version covered by these bindings (minimal required is currently 5.0.0)
 %define		qt_ver	%{version}
 
 Summary:	Python 2 bindings for the Qt5 toolkit
 Summary(pl.UTF-8):	Wiązania Pythona 2 do toolkitu Qt5
 Name:		python-%{module}
-Version:	5.3.2
-Release:	4
+Version:	5.4.1
+Release:	1
 License:	GPL v3
 Group:		Libraries/Python
 Source0:	http://downloads.sourceforge.net/pyqt/PyQt-gpl-%{version}.tar.gz
-# Source0-md5:	81ef608fa4f3961918106d0ca07aa68a
-Patch0:		printsupport.patch
+# Source0-md5:	a07bd7c426c7cda39f9a5072ee724aba
 URL:		http://www.riverbankcomputing.com/software/pyqt/
 # most of BR comes from configure.py
 BuildRequires:	Qt5Bluetooth-devel >= %{qt_ver}
@@ -51,6 +50,8 @@ BuildRequires:	Qt5XmlPatterns-devel >= %{qt_ver}
 BuildRequires:	pkgconfig
 BuildRequires:	python-dbus-devel >= 0.80
 BuildRequires:	python-sip-devel >= %{sip_ver}
+BuildRequires:	python3-dbus >= 0.80
+BuildRequires:	python3-sip-devel >= %{sip_ver}
 BuildRequires:	qt5-build >= %{qt_ver}
 BuildRequires:	qt5-qmake >= %{qt_ver}
 BuildRequires:	rpm-pythonprov
@@ -219,7 +220,6 @@ kodu wykorzystującego PyQt5.
 
 %prep
 %setup -q -n PyQt-gpl-%{version}
-%patch0 -p1
 
 %build
 %if %{with python2}
@@ -332,8 +332,11 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{py_sitedir}/PyQt5/QtWebSockets.so
 %attr(755,root,root) %{py_sitedir}/PyQt5/QtWidgets.so
 %attr(755,root,root) %{py_sitedir}/PyQt5/QtX11Extras.so
+%attr(755,root,root) %{py_sitedir}/PyQt5/QtXml.so
 %attr(755,root,root) %{py_sitedir}/PyQt5/QtXmlPatterns.so
 %attr(755,root,root) %{py_sitedir}/PyQt5/_QOpenGLFunctions_2_0.so
+%attr(755,root,root) %{py_sitedir}/PyQt5/_QOpenGLFunctions_2_1.so
+%attr(755,root,root) %{py_sitedir}/PyQt5/_QOpenGLFunctions_4_1_Core.so
 %{py_sitedir}/PyQt5/__init__.py[co]
 %attr(755,root,root) %{py_sitedir}/dbus/mainloop/pyqt5.so
 
@@ -379,8 +382,11 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{py3_sitedir}/PyQt5/QtWebSockets.so
 %attr(755,root,root) %{py3_sitedir}/PyQt5/QtWidgets.so
 %attr(755,root,root) %{py3_sitedir}/PyQt5/QtX11Extras.so
+%attr(755,root,root) %{py3_sitedir}/PyQt5/QtXml.so
 %attr(755,root,root) %{py3_sitedir}/PyQt5/QtXmlPatterns.so
 %attr(755,root,root) %{py3_sitedir}/PyQt5/_QOpenGLFunctions_2_0.so
+%attr(755,root,root) %{py3_sitedir}/PyQt5/_QOpenGLFunctions_2_1.so
+%attr(755,root,root) %{py3_sitedir}/PyQt5/_QOpenGLFunctions_4_1_Core.so
 %{py3_sitedir}/PyQt5/__init__.py
 %attr(755,root,root) %{py3_sitedir}/dbus/mainloop/pyqt5.so
 
