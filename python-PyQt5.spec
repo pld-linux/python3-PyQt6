@@ -1,4 +1,4 @@
-# TODO: 
+# TODO:
 # - __pycache__ for python3-PyQt5-uic
 # - Fix  /usr/local/lib64/python3.6/site-packages/PyQt5/*.pyi files.
 # Conditional build:
@@ -17,14 +17,11 @@ Summary:	Python 2 bindings for the Qt5 toolkit
 Summary(pl.UTF-8):	Wiązania Pythona 2 do toolkitu Qt5
 Name:		python-%{module}
 Version:	5.7.1
-Release:	0.1
+Release:	1
 License:	GPL v3
 Group:		Libraries/Python
-# Source0:	http://downloads.sourceforge.net/pyqt/PyQt-gpl-%{version}.tar.gz
-# https://sourceforge.net/projects/pyqt/files/PyQt5/PyQt-5.7.1/PyQt5_gpl-5.7.1.tar.gz
 Source0:	https://sourceforge.net/projects/pyqt/files/PyQt5/PyQt-5.7.1/PyQt5_gpl-%{version}.tar.gz
 # Source0-md5:	b3171b67c74aa63a3cd2f386660c898b
-# Source0:	http://downloads.sourceforge.net/pyqt/PyQt-gpl-%{version}.tar.gz
 URL:		http://www.riverbankcomputing.com/software/pyqt/
 # most of BR comes from configure.py
 BuildRequires:	Qt5Bluetooth-devel >= %{qt_ver}
@@ -68,8 +65,8 @@ BuildRequires:	qt5-build >= %{qt_ver}
 BuildRequires:	qt5-qmake >= %{qt_ver}
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.219
-%pyrequires_eq	python-libs
 Requires:	python-dbus >= 0.80
+Requires:	python-libs
 Requires:	python-sip >= %{sip_ver}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -113,8 +110,8 @@ Narzędzie programistyczne pyuic5 dla Pythona 2.
 Summary:	Python 3 bindings for the Qt5 toolkit
 Summary(pl.UTF-8):	Wiązania Pythona 3 do toolkitu Qt5
 Group:		Libraries/Python
-Requires:	python3-libs
 Requires:	python3-dbus >= 0.80
+Requires:	python3-libs
 Requires:	python3-sip >= %{sip_ver}
 
 %description -n python3-PyQt5
