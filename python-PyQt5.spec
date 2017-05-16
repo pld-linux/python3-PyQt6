@@ -1,6 +1,16 @@
 # TODO:
 # - __pycache__ for python3-PyQt5-uic
 # - Fix  /usr/local/lib64/python3.6/site-packages/PyQt5/*.pyi files.
+#
+# Project ERROR: Unknown module(s) in QT: axcontainer
+# Project ERROR: Unknown module(s) in QT: enginio
+# Project ERROR: Unknown module(s) in QT: macextras
+# Project ERROR: Unknown module(s) in QT: uiplugin
+# Project ERROR: Unknown module(s) in QT: webengine
+# Project ERROR: Unknown module(s) in QT: webenginecore
+# Project ERROR: Unknown module(s) in QT: webenginewidgets
+# Project ERROR: Unknown module(s) in QT: winextras
+#
 # Conditional build:
 %bcond_without	python2	# CPython 2.x modules
 %bcond_without	python3	# CPython 3.x modules
