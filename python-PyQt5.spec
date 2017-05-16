@@ -2,15 +2,6 @@
 # - __pycache__ for python3-PyQt5-uic
 # - Fix  /usr/local/lib64/python3.6/site-packages/PyQt5/*.pyi files.
 #
-# Project ERROR: Unknown module(s) in QT: axcontainer
-# Project ERROR: Unknown module(s) in QT: enginio
-# Project ERROR: Unknown module(s) in QT: macextras
-# Project ERROR: Unknown module(s) in QT: uiplugin
-# Project ERROR: Unknown module(s) in QT: webengine
-# Project ERROR: Unknown module(s) in QT: webenginecore
-# Project ERROR: Unknown module(s) in QT: webenginewidgets
-# Project ERROR: Unknown module(s) in QT: winextras
-#
 # Conditional build:
 %bcond_without	python2	# CPython 2.x modules
 %bcond_without	python3	# CPython 3.x modules
@@ -22,23 +13,22 @@
 # %define		qt_ver	%{version}
 %define		qt_ver	5.8.0
 
-
 Summary:	Python 2 bindings for the Qt5 toolkit
 Summary(pl.UTF-8):	Wiązania Pythona 2 do toolkitu Qt5
 Name:		python-%{module}
 Version:	5.8.2
-Release:	0.1
+Release:	1
 License:	GPL v3
 Group:		Libraries/Python
 Source0:	https://sourceforge.net/projects/pyqt/files/PyQt5/PyQt-%{version}/PyQt5_gpl-%{version}.tar.gz
 # Source0-md5:	c3048e9d242f3e72fd393630da1d971a
+Patch0:		install.patch
 URL:		http://www.riverbankcomputing.com/software/pyqt/
 # most of BR comes from configure.py
 BuildRequires:	Qt5Bluetooth-devel >= %{qt_ver}
 BuildRequires:	Qt5Core-devel >= %{qt_ver}
 BuildRequires:	Qt5DBus-devel >= %{qt_ver}
 BuildRequires:	Qt5Designer-devel >= %{qt_ver}
-BuildRequires:	Qt5Enginio-devel >= %{qt_ver}
 BuildRequires:	Qt5Gui-devel >= %{qt_ver}
 BuildRequires:	Qt5Help-devel >= %{qt_ver}
 BuildRequires:	Qt5Location-devel >= %{qt_ver}
@@ -56,6 +46,7 @@ BuildRequires:	Qt5SerialPort-devel >= %{qt_ver}
 BuildRequires:	Qt5Sql-devel >= %{qt_ver}
 BuildRequires:	Qt5Svg-devel >= %{qt_ver}
 BuildRequires:	Qt5Test-devel >= %{qt_ver}
+BuildRequires:	Qt5UiTools-devel >= %{qt_ver}
 BuildRequires:	Qt5WebChannel-devel >= %{qt_ver}
 # TODO (when we succeed to build qtwebengine)
 #BuildRequires:	Qt5WebEngine-devel >= %{qt_ver}
@@ -84,8 +75,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 PyQt5 is a set of Python bindings for the Qt5 toolkit. The bindings
-are implemented as a set of Python modules: Enginio, Qt, QtBluetooth,
-QtCore, QtDBus, QtDesigner, QtGui, QtHelp, QtLocation, QtMultimedia,
+are implemented as a set of Python modules: Qt, QtBluetooth, QtCore,
+QtDBus, QtDesigner, QtGui, QtHelp, QtLocation, QtMultimedia,
 QtMultimediaWidgets, QtNetwork, QtNfc, QtOpenGL, QtPositioning,
 QtPrintSupport, QtQml, QtQuick, QtQuickWidgets, QtSensors,
 QtSerialPort, QtSql, QtSvg, QtTest, QtWebChannel, QtWebKit,
@@ -95,8 +86,8 @@ This package contains Python 2 modules.
 
 %description -l pl.UTF-8
 PyQt5 to zbiór dowiązań do Qt5 dla Pythona. Dowiązania zostały
-zaimplementowane jako moduły Pythona: Enginio, Qt, QtBluetooth,
-QtCore, QtDBus, QtDesigner, QtGui, QtHelp, QtLocation, QtMultimedia,
+zaimplementowane jako moduły Pythona: Qt, QtBluetooth, QtCore, QtDBus,
+QtDesigner, QtGui, QtHelp, QtLocation, QtMultimedia,
 QtMultimediaWidgets, QtNetwork, QtNfc, QtOpenGL, QtPositioning,
 QtPrintSupport, QtQml, QtQuick, QtQuickWidgets, QtSensors,
 QtSerialPort, QtSql, QtSvg, QtTest, QtWebChannel, QtWebKit,
@@ -126,8 +117,8 @@ Requires:	python3-sip >= %{sip_ver}
 
 %description -n python3-PyQt5
 PyQt5 is a set of Python bindings for the Qt5 toolkit. The bindings
-are implemented as a set of Python modules: Enginio, Qt, QtBluetooth,
-QtCore, QtDBus, QtDesigner, QtGui, QtHelp, QtLocation, QtMultimedia,
+are implemented as a set of Python modules: Qt, QtBluetooth, QtCore,
+QtDBus, QtDesigner, QtGui, QtHelp, QtLocation, QtMultimedia,
 QtMultimediaWidgets, QtNetwork, QtNfc, QtOpenGL, QtPositioning,
 QtPrintSupport, QtQml, QtQuick, QtQuickWidgets, QtSensors,
 QtSerialPort, QtSql, QtSvg, QtTest, QtWebChannel, QtWebKit,
@@ -137,8 +128,8 @@ This package contains Python 3 modules.
 
 %description -n python3-PyQt5 -l pl.UTF-8
 PyQt5 to zbiór dowiązań do Qt5 dla Pythona. Dowiązania zostały
-zaimplementowane jako moduły Pythona: Enginio, Qt, QtBluetooth,
-QtCore, QtDBus, QtDesigner, QtGui, QtHelp, QtLocation, QtMultimedia,
+zaimplementowane jako moduły Pythona: Qt, QtBluetooth, QtCore, QtDBus,
+QtDesigner, QtGui, QtHelp, QtLocation, QtMultimedia,
 QtMultimediaWidgets, QtNetwork, QtNfc, QtOpenGL, QtPositioning,
 QtPrintSupport, QtQml, QtQuick, QtQuickWidgets, QtSensors,
 QtSerialPort, QtSql, QtSvg, QtTest, QtWebChannel, QtWebKit,
@@ -239,6 +230,7 @@ kodu wykorzystującego PyQt5.
 
 %prep
 %setup -q -n PyQt5_gpl-%{version}
+%patch0 -p1
 
 %build
 %if %{with python2}
@@ -324,7 +316,6 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libdir}/qt5/plugins/PyQt5
 %attr(755,root,root) %{_libdir}/qt5/plugins/PyQt5/libpyqt5qmlplugin.so
 %dir %{py_sitedir}/PyQt5
-%attr(755,root,root) %{py_sitedir}/PyQt5/Enginio.so
 %attr(755,root,root) %{py_sitedir}/PyQt5/pylupdate.so
 %attr(755,root,root) %{py_sitedir}/PyQt5/pyrcc.so
 %attr(755,root,root) %{py_sitedir}/PyQt5/Qt.so
@@ -381,7 +372,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/qt5/plugins/PyQt5/libpyqt5qmlplugin.so
 %endif
 %dir %{py3_sitedir}/PyQt5
-%attr(755,root,root) %{py3_sitedir}/PyQt5/Enginio.so
 %attr(755,root,root) %{py3_sitedir}/PyQt5/pylupdate.so
 %attr(755,root,root) %{py3_sitedir}/PyQt5/pyrcc.so
 %attr(755,root,root) %{py3_sitedir}/PyQt5/Qt.so
@@ -418,10 +408,40 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{py3_sitedir}/PyQt5/_QOpenGLFunctions_2_0.so
 %attr(755,root,root) %{py3_sitedir}/PyQt5/_QOpenGLFunctions_2_1.so
 %attr(755,root,root) %{py3_sitedir}/PyQt5/_QOpenGLFunctions_4_1_Core.so
+%attr(755,root,root) %{py3_sitedir}/dbus/mainloop/pyqt5.so
+%{py3_sitedir}/PyQt5/QtBluetooth.pyi
+%{py3_sitedir}/PyQt5/QtCore.pyi
+%{py3_sitedir}/PyQt5/QtDBus.pyi
+%{py3_sitedir}/PyQt5/QtDesigner.pyi
+%{py3_sitedir}/PyQt5/QtGui.pyi
+%{py3_sitedir}/PyQt5/QtHelp.pyi
+%{py3_sitedir}/PyQt5/QtLocation.pyi
+%{py3_sitedir}/PyQt5/QtMultimedia.pyi
+%{py3_sitedir}/PyQt5/QtMultimediaWidgets.pyi
+%{py3_sitedir}/PyQt5/QtNetwork.pyi
+%{py3_sitedir}/PyQt5/QtNfc.pyi
+%{py3_sitedir}/PyQt5/QtOpenGL.pyi
+%{py3_sitedir}/PyQt5/QtPositioning.pyi
+%{py3_sitedir}/PyQt5/QtPrintSupport.pyi
+%{py3_sitedir}/PyQt5/QtQml.pyi
+%{py3_sitedir}/PyQt5/QtQuick.pyi
+%{py3_sitedir}/PyQt5/QtQuickWidgets.pyi
+%{py3_sitedir}/PyQt5/QtSensors.pyi
+%{py3_sitedir}/PyQt5/QtSerialPort.pyi
+%{py3_sitedir}/PyQt5/QtSql.pyi
+%{py3_sitedir}/PyQt5/QtSvg.pyi
+%{py3_sitedir}/PyQt5/QtTest.pyi
+%{py3_sitedir}/PyQt5/QtWebChannel.pyi
+%{py3_sitedir}/PyQt5/QtWebKit.pyi
+%{py3_sitedir}/PyQt5/QtWebKitWidgets.pyi
+%{py3_sitedir}/PyQt5/QtWebSockets.pyi
+%{py3_sitedir}/PyQt5/QtWidgets.pyi
+%{py3_sitedir}/PyQt5/QtX11Extras.pyi
+%{py3_sitedir}/PyQt5/QtXml.pyi
+%{py3_sitedir}/PyQt5/QtXmlPatterns.pyi
 %{py3_sitedir}/PyQt5/__init__.py
 %{py3_sitedir}/PyQt5/pylupdate_main.py
 %{py3_sitedir}/PyQt5/pyrcc_main.py
-%attr(755,root,root) %{py3_sitedir}/dbus/mainloop/pyqt5.so
 
 %files -n python3-PyQt5-uic
 %defattr(644,root,root,755)
@@ -449,3 +469,5 @@ rm -rf $RPM_BUILD_ROOT
 %files -n qscintilla2-%{module}-api
 %defattr(644,root,root,755)
 %{_datadir}/qt5/qsci/api/python/PyQt5.api
+
+
