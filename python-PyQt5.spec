@@ -10,18 +10,18 @@
 %define		sip_ver	2:4.16.6
 # last qt version covered by these bindings (minimal required is currently 5.0.0)
 # %define		qt_ver	%{version}
-%define		qt_ver	5.5.1
+%define		qt_ver	5.8.0
 
 
 Summary:	Python 2 bindings for the Qt5 toolkit
 Summary(pl.UTF-8):	Wiązania Pythona 2 do toolkitu Qt5
 Name:		python-%{module}
-Version:	5.7.1
-Release:	1
+Version:	5.8.2
+Release:	0.1
 License:	GPL v3
 Group:		Libraries/Python
-Source0:	https://sourceforge.net/projects/pyqt/files/PyQt5/PyQt-5.7.1/PyQt5_gpl-%{version}.tar.gz
-# Source0-md5:	b3171b67c74aa63a3cd2f386660c898b
+Source0:	https://sourceforge.net/projects/pyqt/files/PyQt5/PyQt-%{version}/PyQt5_gpl-%{version}.tar.gz
+# Source0-md5:	c3048e9d242f3e72fd393630da1d971a
 URL:		http://www.riverbankcomputing.com/software/pyqt/
 # most of BR comes from configure.py
 BuildRequires:	Qt5Bluetooth-devel >= %{qt_ver}
