@@ -17,7 +17,7 @@ Summary:	Python 2 bindings for the Qt5 toolkit
 Summary(pl.UTF-8):	Wiązania Pythona 2 do toolkitu Qt5
 Name:		python-%{module}
 Version:	5.8.2
-Release:	1
+Release:	2
 License:	GPL v3
 Group:		Libraries/Python
 Source0:	https://sourceforge.net/projects/pyqt/files/PyQt5/PyQt-%{version}/PyQt5_gpl-%{version}.tar.gz
@@ -155,6 +155,11 @@ Summary(pl.UTF-8):	Narzędzia programistyczne PyQt5
 Group:		Development/Tools
 Requires:	Qt5Core >= %{qt_ver}
 Requires:	Qt5Xml >= %{qt_ver}
+%if %{with python2}
+Requires:	%{name} = %{version}-%{release}
+%else
+Requires:	python3-PyQt5 = %{version}-%{release}
+%endif
 
 %description devel-tools
 PyQt5 development tools: pylupdate5, pyrcc5.
