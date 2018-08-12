@@ -8,20 +8,20 @@
 
 %define		module	PyQt5
 # minimal required sip version
-%define		sip_ver	2:4.16.6
+%define		sip_ver	2:4.19.12-2
 # last qt version covered by these bindings (minimal required is currently 5.0.0)
 # %define		qt_ver	%{version}
-%define		qt_ver	5.8.0
+%define		qt_ver	5.11.0
 
 Summary:	Python 2 bindings for the Qt5 toolkit
 Summary(pl.UTF-8):	Wiązania Pythona 2 do toolkitu Qt5
 Name:		python-%{module}
-Version:	5.8.2
-Release:	3
+Version:	5.11.2
+Release:	1
 License:	GPL v3
 Group:		Libraries/Python
 Source0:	https://sourceforge.net/projects/pyqt/files/PyQt5/PyQt-%{version}/PyQt5_gpl-%{version}.tar.gz
-# Source0-md5:	c3048e9d242f3e72fd393630da1d971a
+# Source0-md5:	78837d77c42a2f177da771df6584ee91
 Patch0:		install.patch
 URL:		http://www.riverbankcomputing.com/software/pyqt/
 # most of BR comes from configure.py
@@ -48,9 +48,7 @@ BuildRequires:	Qt5Svg-devel >= %{qt_ver}
 BuildRequires:	Qt5Test-devel >= %{qt_ver}
 BuildRequires:	Qt5UiTools-devel >= %{qt_ver}
 BuildRequires:	Qt5WebChannel-devel >= %{qt_ver}
-# TODO (when we succeed to build qtwebengine)
-#BuildRequires:	Qt5WebEngine-devel >= %{qt_ver}
-BuildRequires:	Qt5WebKit-devel >= %{qt_ver}
+BuildRequires:	Qt5WebEngine-devel >= %{qt_ver}
 BuildRequires:	Qt5WebSockets-devel >= %{qt_ver}
 BuildRequires:	Qt5Widgets-devel >= %{qt_ver}
 BuildRequires:	Qt5X11Extras-devel >= %{qt_ver}
@@ -79,8 +77,8 @@ are implemented as a set of Python modules: Qt, QtBluetooth, QtCore,
 QtDBus, QtDesigner, QtGui, QtHelp, QtLocation, QtMultimedia,
 QtMultimediaWidgets, QtNetwork, QtNfc, QtOpenGL, QtPositioning,
 QtPrintSupport, QtQml, QtQuick, QtQuickWidgets, QtSensors,
-QtSerialPort, QtSql, QtSvg, QtTest, QtWebChannel, QtWebKit,
-QtWebKitWidgets, QtWebSockets, QtX11Extras and QtXmlPatterns.
+QtSerialPort, QtSql, QtSvg, QtTest, QtWebChannel, QtWebEngine,
+QtWebEngineWidgets, QtWebSockets, QtX11Extras and QtXmlPatterns.
 
 This package contains Python 2 modules.
 
@@ -90,8 +88,8 @@ zaimplementowane jako moduły Pythona: Qt, QtBluetooth, QtCore, QtDBus,
 QtDesigner, QtGui, QtHelp, QtLocation, QtMultimedia,
 QtMultimediaWidgets, QtNetwork, QtNfc, QtOpenGL, QtPositioning,
 QtPrintSupport, QtQml, QtQuick, QtQuickWidgets, QtSensors,
-QtSerialPort, QtSql, QtSvg, QtTest, QtWebChannel, QtWebKit,
-QtWebKitWidgets, QtWebSockets, QtX11Extras oraz QtXmlPatterns.
+QtSerialPort, QtSql, QtSvg, QtTest, QtWebChannel, QtWebEngine,
+QtWebEngineWidgets, QtWebSockets, QtX11Extras oraz QtXmlPatterns.
 
 Ten pakiet zawiera moduły Pythona 2.
 
@@ -121,8 +119,8 @@ are implemented as a set of Python modules: Qt, QtBluetooth, QtCore,
 QtDBus, QtDesigner, QtGui, QtHelp, QtLocation, QtMultimedia,
 QtMultimediaWidgets, QtNetwork, QtNfc, QtOpenGL, QtPositioning,
 QtPrintSupport, QtQml, QtQuick, QtQuickWidgets, QtSensors,
-QtSerialPort, QtSql, QtSvg, QtTest, QtWebChannel, QtWebKit,
-QtWebKitWidgets, QtWebSockets, QtX11Extras and QtXmlPatterns.
+QtSerialPort, QtSql, QtSvg, QtTest, QtWebChannel, QtWebEngine,
+QtWebEngineWidgets, QtWebSockets, QtX11Extras and QtXmlPatterns.
 
 This package contains Python 3 modules.
 
@@ -132,8 +130,8 @@ zaimplementowane jako moduły Pythona: Qt, QtBluetooth, QtCore, QtDBus,
 QtDesigner, QtGui, QtHelp, QtLocation, QtMultimedia,
 QtMultimediaWidgets, QtNetwork, QtNfc, QtOpenGL, QtPositioning,
 QtPrintSupport, QtQml, QtQuick, QtQuickWidgets, QtSensors,
-QtSerialPort, QtSql, QtSvg, QtTest, QtWebChannel, QtWebKit,
-QtWebKitWidgets, QtWebSockets, QtX11Extras oraz QtXmlPatterns.
+QtSerialPort, QtSql, QtSvg, QtTest, QtWebChannel, QtWebEngine,
+QtWebEngineWidgets, QtWebSockets, QtX11Extras oraz QtXmlPatterns.
 
 Ten pakiet zawiera moduły Pythona 3.
 
@@ -242,6 +240,7 @@ kodu wykorzystującego PyQt5.
 install -d build-py2
 cd build-py2
 %{__python} ../configure.py \
+	--no-dist-info \
 	--verbose \
 	--assume-shared \
 	--confirm-license \
@@ -263,6 +262,7 @@ cd ..
 install -d build-py3
 cd build-py3
 %{__python3} ../configure.py \
+	--no-dist-info \
 	--verbose \
 	--assume-shared \
 	--confirm-license \
@@ -347,8 +347,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{py_sitedir}/PyQt5/QtSvg.so
 %attr(755,root,root) %{py_sitedir}/PyQt5/QtTest.so
 %attr(755,root,root) %{py_sitedir}/PyQt5/QtWebChannel.so
-%attr(755,root,root) %{py_sitedir}/PyQt5/QtWebKit.so
-%attr(755,root,root) %{py_sitedir}/PyQt5/QtWebKitWidgets.so
+%attr(755,root,root) %{py_sitedir}/PyQt5/QtWebEngine.so
+%attr(755,root,root) %{py_sitedir}/PyQt5/QtWebEngineCore.so
+%attr(755,root,root) %{py_sitedir}/PyQt5/QtWebEngineWidgets.so
 %attr(755,root,root) %{py_sitedir}/PyQt5/QtWebSockets.so
 %attr(755,root,root) %{py_sitedir}/PyQt5/QtWidgets.so
 %attr(755,root,root) %{py_sitedir}/PyQt5/QtX11Extras.so
@@ -403,8 +404,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{py3_sitedir}/PyQt5/QtSvg.so
 %attr(755,root,root) %{py3_sitedir}/PyQt5/QtTest.so
 %attr(755,root,root) %{py3_sitedir}/PyQt5/QtWebChannel.so
-%attr(755,root,root) %{py3_sitedir}/PyQt5/QtWebKit.so
-%attr(755,root,root) %{py3_sitedir}/PyQt5/QtWebKitWidgets.so
+%attr(755,root,root) %{py3_sitedir}/PyQt5/QtWebEngine.so
+%attr(755,root,root) %{py3_sitedir}/PyQt5/QtWebEngineCore.so
+%attr(755,root,root) %{py3_sitedir}/PyQt5/QtWebEngineWidgets.so
 %attr(755,root,root) %{py3_sitedir}/PyQt5/QtWebSockets.so
 %attr(755,root,root) %{py3_sitedir}/PyQt5/QtWidgets.so
 %attr(755,root,root) %{py3_sitedir}/PyQt5/QtX11Extras.so
@@ -437,8 +439,9 @@ rm -rf $RPM_BUILD_ROOT
 %{py3_sitedir}/PyQt5/QtSvg.pyi
 %{py3_sitedir}/PyQt5/QtTest.pyi
 %{py3_sitedir}/PyQt5/QtWebChannel.pyi
-%{py3_sitedir}/PyQt5/QtWebKit.pyi
-%{py3_sitedir}/PyQt5/QtWebKitWidgets.pyi
+%{py3_sitedir}/PyQt5/QtWebEngine.pyi
+%{py3_sitedir}/PyQt5/QtWebEngineCore.pyi
+%{py3_sitedir}/PyQt5/QtWebEngineWidgets.pyi
 %{py3_sitedir}/PyQt5/QtWebSockets.pyi
 %{py3_sitedir}/PyQt5/QtWidgets.pyi
 %{py3_sitedir}/PyQt5/QtX11Extras.pyi
