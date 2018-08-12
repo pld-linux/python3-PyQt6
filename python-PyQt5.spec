@@ -17,7 +17,7 @@ Summary:	Python 2 bindings for the Qt5 toolkit
 Summary(pl.UTF-8):	Wiązania Pythona 2 do toolkitu Qt5
 Name:		python-%{module}
 Version:	5.11.2
-Release:	1
+Release:	2
 License:	GPL v3
 Group:		Libraries/Python
 Source0:	https://sourceforge.net/projects/pyqt/files/PyQt5/PyQt-%{version}/PyQt5_gpl-%{version}.tar.gz
@@ -48,6 +48,7 @@ BuildRequires:	Qt5Svg-devel >= %{qt_ver}
 BuildRequires:	Qt5Test-devel >= %{qt_ver}
 BuildRequires:	Qt5UiTools-devel >= %{qt_ver}
 BuildRequires:	Qt5WebChannel-devel >= %{qt_ver}
+BuildRequires:	Qt5WebKit-devel >= %{qt_ver}
 BuildRequires:	Qt5WebEngine-devel >= %{qt_ver}
 BuildRequires:	Qt5WebSockets-devel >= %{qt_ver}
 BuildRequires:	Qt5Widgets-devel >= %{qt_ver}
@@ -354,6 +355,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{py_sitedir}/PyQt5/QtWebEngine.so
 %attr(755,root,root) %{py_sitedir}/PyQt5/QtWebEngineCore.so
 %attr(755,root,root) %{py_sitedir}/PyQt5/QtWebEngineWidgets.so
+%attr(755,root,root) %{py_sitedir}/PyQt5/QtWebKit.so
+%attr(755,root,root) %{py_sitedir}/PyQt5/QtWebKitWidgets.so
 %attr(755,root,root) %{py_sitedir}/PyQt5/QtWebSockets.so
 %attr(755,root,root) %{py_sitedir}/PyQt5/QtWidgets.so
 %attr(755,root,root) %{py_sitedir}/PyQt5/QtX11Extras.so
@@ -411,6 +414,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{py3_sitedir}/PyQt5/QtWebEngine.so
 %attr(755,root,root) %{py3_sitedir}/PyQt5/QtWebEngineCore.so
 %attr(755,root,root) %{py3_sitedir}/PyQt5/QtWebEngineWidgets.so
+%attr(755,root,root) %{py3_sitedir}/PyQt5/QtWebKit.so
+%attr(755,root,root) %{py3_sitedir}/PyQt5/QtWebKitWidgets.so
 %attr(755,root,root) %{py3_sitedir}/PyQt5/QtWebSockets.so
 %attr(755,root,root) %{py3_sitedir}/PyQt5/QtWidgets.so
 %attr(755,root,root) %{py3_sitedir}/PyQt5/QtX11Extras.so
@@ -446,6 +451,8 @@ rm -rf $RPM_BUILD_ROOT
 %{py3_sitedir}/PyQt5/QtWebEngine.pyi
 %{py3_sitedir}/PyQt5/QtWebEngineCore.pyi
 %{py3_sitedir}/PyQt5/QtWebEngineWidgets.pyi
+%{py3_sitedir}/PyQt5/QtWebKit.pyi
+%{py3_sitedir}/PyQt5/QtWebKitWidgets.pyi
 %{py3_sitedir}/PyQt5/QtWebSockets.pyi
 %{py3_sitedir}/PyQt5/QtWidgets.pyi
 %{py3_sitedir}/PyQt5/QtX11Extras.pyi
