@@ -6,6 +6,7 @@
 %bcond_without	python2	# CPython 2.x modules
 %bcond_without	python3	# CPython 3.x modules
 %bcond_without	webengine	# QT5WebEngine support
+%bcond_without	webkit		# QT5WebKit support
 
 %define		module	PyQt5
 # minimal required sip version
@@ -49,7 +50,7 @@ BuildRequires:	Qt5Svg-devel >= %{qt_ver}
 BuildRequires:	Qt5Test-devel >= %{qt_ver}
 BuildRequires:	Qt5UiTools-devel >= %{qt_ver}
 BuildRequires:	Qt5WebChannel-devel >= %{qt_ver}
-BuildRequires:	Qt5WebKit-devel >= %{qt_ver}
+%{?with_webkit:BuildRequires:	Qt5WebKit-devel >= %{qt_ver}}
 %{?with_webengine:BuildRequires:	Qt5WebEngine-devel >= %{qt_ver}}
 BuildRequires:	Qt5WebSockets-devel >= %{qt_ver}
 BuildRequires:	Qt5Widgets-devel >= %{qt_ver}
