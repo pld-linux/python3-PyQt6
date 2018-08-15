@@ -8,6 +8,11 @@
 %bcond_without	webengine	# QT5WebEngine support
 %bcond_without	webkit		# QT5WebKit support
 
+%ifarch x32
+%undefine	with_webengine
+%undefine	with_webkit
+%endif
+
 %define		module	PyQt5
 # minimal required sip version
 %define		sip_ver	2:4.19.12-2
@@ -19,7 +24,7 @@ Summary:	Python 2 bindings for the Qt5 toolkit
 Summary(pl.UTF-8):	Wiązania Pythona 2 do toolkitu Qt5
 Name:		python-%{module}
 Version:	5.11.2
-Release:	2
+Release:	2.1
 License:	GPL v3
 Group:		Libraries/Python
 Source0:	https://sourceforge.net/projects/pyqt/files/PyQt5/PyQt-%{version}/PyQt5_gpl-%{version}.tar.gz
@@ -354,11 +359,15 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{py_sitedir}/PyQt5/QtSvg.so
 %attr(755,root,root) %{py_sitedir}/PyQt5/QtTest.so
 %attr(755,root,root) %{py_sitedir}/PyQt5/QtWebChannel.so
+%if %{with webengine}
 %attr(755,root,root) %{py_sitedir}/PyQt5/QtWebEngine.so
 %attr(755,root,root) %{py_sitedir}/PyQt5/QtWebEngineCore.so
 %attr(755,root,root) %{py_sitedir}/PyQt5/QtWebEngineWidgets.so
+%endif
+%if %{with webkit}
 %attr(755,root,root) %{py_sitedir}/PyQt5/QtWebKit.so
 %attr(755,root,root) %{py_sitedir}/PyQt5/QtWebKitWidgets.so
+%endif
 %attr(755,root,root) %{py_sitedir}/PyQt5/QtWebSockets.so
 %attr(755,root,root) %{py_sitedir}/PyQt5/QtWidgets.so
 %attr(755,root,root) %{py_sitedir}/PyQt5/QtX11Extras.so
@@ -413,11 +422,15 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{py3_sitedir}/PyQt5/QtSvg.so
 %attr(755,root,root) %{py3_sitedir}/PyQt5/QtTest.so
 %attr(755,root,root) %{py3_sitedir}/PyQt5/QtWebChannel.so
+%if %{with webengine}
 %attr(755,root,root) %{py3_sitedir}/PyQt5/QtWebEngine.so
 %attr(755,root,root) %{py3_sitedir}/PyQt5/QtWebEngineCore.so
 %attr(755,root,root) %{py3_sitedir}/PyQt5/QtWebEngineWidgets.so
+%endif
+%if %{with webkit}
 %attr(755,root,root) %{py3_sitedir}/PyQt5/QtWebKit.so
 %attr(755,root,root) %{py3_sitedir}/PyQt5/QtWebKitWidgets.so
+%endif
 %attr(755,root,root) %{py3_sitedir}/PyQt5/QtWebSockets.so
 %attr(755,root,root) %{py3_sitedir}/PyQt5/QtWidgets.so
 %attr(755,root,root) %{py3_sitedir}/PyQt5/QtX11Extras.so
@@ -450,11 +463,15 @@ rm -rf $RPM_BUILD_ROOT
 %{py3_sitedir}/PyQt5/QtSvg.pyi
 %{py3_sitedir}/PyQt5/QtTest.pyi
 %{py3_sitedir}/PyQt5/QtWebChannel.pyi
+%if %{with webengine}
 %{py3_sitedir}/PyQt5/QtWebEngine.pyi
 %{py3_sitedir}/PyQt5/QtWebEngineCore.pyi
 %{py3_sitedir}/PyQt5/QtWebEngineWidgets.pyi
+%endif
+%if %{with webkit}
 %{py3_sitedir}/PyQt5/QtWebKit.pyi
 %{py3_sitedir}/PyQt5/QtWebKitWidgets.pyi
+%endif
 %{py3_sitedir}/PyQt5/QtWebSockets.pyi
 %{py3_sitedir}/PyQt5/QtWidgets.pyi
 %{py3_sitedir}/PyQt5/QtX11Extras.pyi
