@@ -24,7 +24,7 @@ Summary:	Python 2 bindings for the Qt5 toolkit
 Summary(pl.UTF-8):	Wiązania Pythona 2 do toolkitu Qt5
 Name:		python-%{module}
 Version:	5.11.2
-Release:	2.1
+Release:	3
 License:	GPL v3
 Group:		Libraries/Python
 Source0:	https://sourceforge.net/projects/pyqt/files/PyQt5/PyQt-%{version}/PyQt5_gpl-%{version}.tar.gz
@@ -67,7 +67,7 @@ BuildRequires:	pkgconfig
 # configure.py does: "from PyQt5 import sip" but sip doesn't provide PyQt5/__init__.py file,
 # and thus sip cannot be import. That's why we require python-PyQt5 (which provides __init__.py)
 # here. Only for python2 since python3 can import from directory without __init__.py file.
-#{?with_python2:BuildRequires:  python-PyQt5 >= 5.11.2}
+%{?with_python2:BuildRequires:  python-PyQt5 >= 5.11.2}
 BuildRequires:	python-dbus-devel >= 0.80
 BuildRequires:	python-sip-devel >= %{sip_ver}
 BuildRequires:	python3-dbus >= 0.80
