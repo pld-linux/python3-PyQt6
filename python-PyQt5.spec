@@ -24,7 +24,7 @@ Summary:	Python 2 bindings for the Qt5 toolkit
 Summary(pl.UTF-8):	Wiązania Pythona 2 do toolkitu Qt5
 Name:		python-%{module}
 Version:	5.11.2
-Release:	3
+Release:	4
 License:	GPL v3
 Group:		Libraries/Python
 Source0:	https://sourceforge.net/projects/pyqt/files/PyQt5/PyQt-%{version}/PyQt5_gpl-%{version}.tar.gz
@@ -69,8 +69,10 @@ BuildRequires:	pkgconfig
 # here. Only for python2 since python3 can import from directory without __init__.py file.
 %{?with_python2:BuildRequires:  python-PyQt5 >= 5.11.2}
 BuildRequires:	python-dbus-devel >= 0.80
+BuildRequires:	python-PyQt5-sip >= %{sip_ver}
 BuildRequires:	python-sip-devel >= %{sip_ver}
 BuildRequires:	python3-dbus >= 0.80
+BuildRequires:	python3-PyQt5-sip >= %{sip_ver}
 BuildRequires:	python3-sip-devel >= %{sip_ver}
 BuildRequires:	qt5-build >= %{qt_ver}
 BuildRequires:	qt5-qmake >= %{qt_ver}
@@ -78,7 +80,7 @@ BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.219
 Requires:	python-dbus >= 0.80
 Requires:	python-libs
-Requires:	python-sip >= %{sip_ver}
+Requires:	python-PyQt5-sip >= %{sip_ver}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_sipfilesdir	%{_datadir}/sip
@@ -123,7 +125,7 @@ Summary(pl.UTF-8):	Wiązania Pythona 3 do toolkitu Qt5
 Group:		Libraries/Python
 Requires:	python3-dbus >= 0.80
 Requires:	python3-libs
-Requires:	python3-sip >= %{sip_ver}
+Requires:	python3-PyQt5-sip >= %{sip_ver}
 
 %description -n python3-PyQt5
 PyQt5 is a set of Python bindings for the Qt5 toolkit. The bindings
