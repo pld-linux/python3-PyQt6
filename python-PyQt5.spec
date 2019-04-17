@@ -7,10 +7,6 @@
 %bcond_without	python3	# CPython 3.x modules
 %bcond_without	webkit		# QT5WebKit support
 
-%ifarch x32
-%undefine	with_webkit
-%endif
-
 %define		module	PyQt5
 # minimal required sip version
 %define		sip_ver	2:4.19.14-1
@@ -22,7 +18,7 @@ Summary:	Python 2 bindings for the Qt5 toolkit
 Summary(pl.UTF-8):	Wiązania Pythona 2 do toolkitu Qt5
 Name:		python-%{module}
 Version:	5.12.1
-Release:	1
+Release:	2
 License:	GPL v3
 Group:		Libraries/Python
 Source0:	https://www.riverbankcomputing.com/static/Downloads/PyQt5/PyQt5_gpl-%{version}.tar.gz
