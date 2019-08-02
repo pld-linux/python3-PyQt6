@@ -1,18 +1,17 @@
-# TODO:
-# - __pycache__ for python3-PyQt5-uic
-# - Fix  /usr/local/lib64/python3.6/site-packages/PyQt5/*.pyi files.
 #
 # Conditional build:
-%bcond_without	python2	# CPython 2.x modules
-%bcond_without	python3	# CPython 3.x modules
-%bcond_without	webkit		# QT5WebKit support
+%bcond_without	python2		# CPython 2.x modules
+%bcond_without	python3		# CPython 3.x modules
+%bcond_with	enginio		# Qt5Enginio support
+%bcond_without	webkit		# Qt5WebKit support
 
 %define		module	PyQt5
 # minimal required sip version
-%define		sip_ver	2:4.19.14-1
+%define		sip_ver		2:4.19.14-1
 # last qt version covered by these bindings (minimal required is currently 5.0.0)
-# %define		qt_ver	%{version}
-%define		qt_ver	5.12.0
+# %define	qt_ver		%{version}
+%define		qt_ver		5.12.0
+%define		qtenginio_ver	1:1.6.0
 
 Summary:	Python 2 bindings for the Qt5 toolkit
 Summary(pl.UTF-8):	Wiązania Pythona 2 do toolkitu Qt5
@@ -24,12 +23,13 @@ Group:		Libraries/Python
 Source0:	https://www.riverbankcomputing.com/static/Downloads/PyQt5/%{version}/PyQt5_gpl-%{version}.tar.gz
 # Source0-md5:	0848fa62dc99ecf2e96f7cdda727c8a2
 Patch0:		install.patch
-URL:		http://www.riverbankcomputing.com/software/pyqt/
+URL:		https://riverbankcomputing.com/software/pyqt/intro
 # most of BR comes from configure.py
 BuildRequires:	Qt5Bluetooth-devel >= %{qt_ver}
 BuildRequires:	Qt5Core-devel >= %{qt_ver}
 BuildRequires:	Qt5DBus-devel >= %{qt_ver}
 BuildRequires:	Qt5Designer-devel >= %{qt_ver}
+%{?with_enginio:BuildRequires:	Qt5Enginio-devel >= %{qtenginio_ver}}
 BuildRequires:	Qt5Gui-devel >= %{qt_ver}
 BuildRequires:	Qt5Help-devel >= %{qt_ver}
 BuildRequires:	Qt5Location-devel >= %{qt_ver}
@@ -296,6 +296,9 @@ install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 	DESTDIR=$RPM_BUILD_ROOT \
 	INSTALL_ROOT=$RPM_BUILD_ROOT
 
+%py3_comp $RPM_BUILD_ROOT%{py3_sitedir}
+%py3_ocomp $RPM_BUILD_ROOT%{py3_sitedir}
+
 %{__mv} $RPM_BUILD_ROOT%{_bindir}/pyuic5{,-3}
 %endif
 
@@ -330,6 +333,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{py_sitedir}/PyQt5
 %attr(755,root,root) %{py_sitedir}/PyQt5/pylupdate.so
 %attr(755,root,root) %{py_sitedir}/PyQt5/pyrcc.so
+%{?with_enginio:%attr(755,root,root) %{py_sitedir}/PyQt5/Enginio.so}
 %attr(755,root,root) %{py_sitedir}/PyQt5/Qt.so
 %attr(755,root,root) %{py_sitedir}/PyQt5/QtBluetooth.so
 %attr(755,root,root) %{py_sitedir}/PyQt5/QtCore.so
@@ -388,6 +392,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{py3_sitedir}/PyQt5
 %attr(755,root,root) %{py3_sitedir}/PyQt5/pylupdate.so
 %attr(755,root,root) %{py3_sitedir}/PyQt5/pyrcc.so
+%{?with_enginio:%attr(755,root,root) %{py3_sitedir}/PyQt5/Enginio.so}
 %attr(755,root,root) %{py3_sitedir}/PyQt5/Qt.so
 %attr(755,root,root) %{py3_sitedir}/PyQt5/QtBluetooth.so
 %attr(755,root,root) %{py3_sitedir}/PyQt5/QtCore.so
@@ -425,6 +430,13 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{py3_sitedir}/PyQt5/_QOpenGLFunctions_2_1.so
 %attr(755,root,root) %{py3_sitedir}/PyQt5/_QOpenGLFunctions_4_1_Core.so
 %attr(755,root,root) %{py3_sitedir}/dbus/mainloop/pyqt5.so
+%{py3_sitedir}/PyQt5/__init__.py
+%{py3_sitedir}/PyQt5/pylupdate_main.py
+%{py3_sitedir}/PyQt5/pyrcc_main.py
+%{py3_sitedir}/PyQt5/__pycache__
+
+# annotations (-devel?)
+%{?with_enginio:%{py3_sitedir}/PyQt5/Enginio.pyi}
 %{py3_sitedir}/PyQt5/QtBluetooth.pyi
 %{py3_sitedir}/PyQt5/QtCore.pyi
 %{py3_sitedir}/PyQt5/QtDBus.pyi
@@ -457,9 +469,6 @@ rm -rf $RPM_BUILD_ROOT
 %{py3_sitedir}/PyQt5/QtX11Extras.pyi
 %{py3_sitedir}/PyQt5/QtXml.pyi
 %{py3_sitedir}/PyQt5/QtXmlPatterns.pyi
-%{py3_sitedir}/PyQt5/__init__.py
-%{py3_sitedir}/PyQt5/pylupdate_main.py
-%{py3_sitedir}/PyQt5/pyrcc_main.py
 
 %files -n python3-PyQt5-uic
 %defattr(644,root,root,755)
@@ -487,5 +496,3 @@ rm -rf $RPM_BUILD_ROOT
 %files -n qscintilla2-%{module}-api
 %defattr(644,root,root,755)
 %{_datadir}/qt5/qsci/api/python/PyQt5.api
-
-
