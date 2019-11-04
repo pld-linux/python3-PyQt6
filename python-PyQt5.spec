@@ -16,12 +16,12 @@
 Summary:	Python 2 bindings for the Qt5 toolkit
 Summary(pl.UTF-8):	Wiązania Pythona 2 do toolkitu Qt5
 Name:		python-%{module}
-Version:	5.13.1
-Release:	2
+Version:	5.13.2
+Release:	1
 License:	GPL v3
 Group:		Libraries/Python
-Source0:	https://www.riverbankcomputing.com/static/Downloads/PyQt5/%{version}/PyQt5_gpl-%{version}.tar.gz
-# Source0-md5:	c77af2f4e230b0053fd22bc2ece2e6c0
+Source0:	https://www.riverbankcomputing.com/static/Downloads/PyQt5/%{version}/PyQt5-%{version}.tar.gz
+# Source0-md5:	c1023cb9c3d29a89fc109b163a0175c0
 Patch0:		install.patch
 URL:		https://riverbankcomputing.com/software/pyqt/intro
 # most of BR comes from configure.py
@@ -239,7 +239,7 @@ umożliwić automatyczne dopełnianie i podpowiedzi przy modyfikowaniu
 kodu wykorzystującego PyQt5.
 
 %prep
-%setup -q -n PyQt5_gpl-%{version}
+%setup -q -n PyQt5-%{version}
 %patch0 -p1
 
 %build
