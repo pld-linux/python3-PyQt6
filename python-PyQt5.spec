@@ -7,7 +7,7 @@
 
 %define		module	PyQt5
 # minimal required sip version
-%define		sip_ver		2:4.19.14-1
+%define		sip_ver		2:4.19.20
 # last qt version covered by these bindings (minimal required is currently 5.0.0)
 # %define	qt_ver		%{version}
 %define		qt_ver		5.12.0
@@ -20,7 +20,8 @@ Version:	5.14.1
 Release:	1
 License:	GPL v3
 Group:		Libraries/Python
-Source0:	https://pypi.python.org/packages/source/P/PyQt5/PyQt5-%{version}.tar.gz
+#Source0Download: https://pypi.org/simple/PyQt5/
+Source0:	https://files.pythonhosted.org/packages/source/P/PyQt5/PyQt5-%{version}.tar.gz
 # Source0-md5:	404ea30ccc1e0ae1c5c0c4318c9a952b
 Patch0:		install.patch
 URL:		https://riverbankcomputing.com/software/pyqt/intro
