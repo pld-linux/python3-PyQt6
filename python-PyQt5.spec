@@ -58,16 +58,20 @@ BuildRequires:	Qt5Xml-devel >= %{qt_ver}
 BuildRequires:	Qt5XmlPatterns-devel >= %{qt_ver}
 BuildRequires:	dbus-devel >= 1
 BuildRequires:	pkgconfig
+%if %{with python2}
 # configure.py does: "from PyQt5 import sip" but sip doesn't provide PyQt5/__init__.py file,
 # and thus sip cannot be import. That's why we require python-PyQt5 (which provides __init__.py)
 # here. Only for python2 since python3 can import from directory without __init__.py file.
-%{?with_python2:BuildRequires:  python-PyQt5 >= 5.11.2}
+BuildRequires:	python-PyQt5 >= 5.11.2
 BuildRequires:	python-dbus-devel >= 0.80
 BuildRequires:	python-PyQt5-sip >= %{sip_ver}
 BuildRequires:	python-sip-devel >= %{sip_ver}
+%endif
+%if %{with python3}
 BuildRequires:	python3-dbus >= 0.80
 BuildRequires:	python3-PyQt5-sip >= %{sip_ver}
 BuildRequires:	python3-sip-devel >= %{sip_ver}
+%endif
 BuildRequires:	qt5-build >= %{qt_ver}
 BuildRequires:	qt5-qmake >= %{qt_ver}
 BuildRequires:	rpm-pythonprov
