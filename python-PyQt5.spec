@@ -7,7 +7,7 @@
 
 %define		module	PyQt5
 # minimal required sip version
-%define		sip_ver		2:4.19.20
+%define		sip_ver		2:4.19.23
 # last qt version covered by these bindings (minimal required is currently 5.0.0)
 # %define	qt_ver		%{version}
 %define		qt_ver		5.12.0
@@ -16,13 +16,13 @@
 Summary:	Python 2 bindings for the Qt5 toolkit
 Summary(pl.UTF-8):	Wiązania Pythona 2 do toolkitu Qt5
 Name:		python-%{module}
-Version:	5.14.2
+Version:	5.15.0
 Release:	1
 License:	GPL v3
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/PyQt5/
 Source0:	https://files.pythonhosted.org/packages/source/P/PyQt5/PyQt5-%{version}.tar.gz
-# Source0-md5:	cd3cdb70e4da83232eeb35f826a08aef
+# Source0-md5:	451fe0c69aef39ed472ded884eaf94bc
 Patch0:		install.patch
 URL:		https://riverbankcomputing.com/software/pyqt/intro
 # most of BR comes from configure.py
