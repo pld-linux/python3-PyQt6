@@ -68,6 +68,7 @@ BuildRequires:	python-PyQt5-sip >= %{sip_ver}
 BuildRequires:	python-sip-devel >= %{sip_ver}
 %endif
 %if %{with python3}
+BuildRequires:	python-dbus-devel >= 0.80
 BuildRequires:	python3-dbus >= 0.80
 BuildRequires:	python3-PyQt5-sip >= %{sip_ver}
 BuildRequires:	python3-sip-devel >= %{sip_ver}
