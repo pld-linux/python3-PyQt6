@@ -16,13 +16,13 @@
 Summary:	Python 2 bindings for the Qt5 toolkit
 Summary(pl.UTF-8):	Wiązania Pythona 2 do toolkitu Qt5
 Name:		python-%{module}
-Version:	5.15.2
-Release:	6
+Version:	5.15.6
+Release:	0.1
 License:	GPL v3
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/PyQt5/
 Source0:	https://files.pythonhosted.org/packages/source/P/PyQt5/PyQt5-%{version}.tar.gz
-# Source0-md5:	b94576e9e013210dc5aba061913e4bd4
+# Source0-md5:	0c7fca60aa6ee13c235f68576d9c7bed
 Patch0:		install.patch
 URL:		https://riverbankcomputing.com/software/pyqt/intro
 # most of BR comes from configure.py
@@ -40,9 +40,11 @@ BuildRequires:	Qt5Network-devel >= %{qt_ver}
 BuildRequires:	Qt5Nfc-devel >= %{qt_ver}
 BuildRequires:	Qt5OpenGL-devel >= %{qt_ver}
 BuildRequires:	Qt5Positioning-devel >= %{qt_ver}
-BuildRequires:	Qt5PrintSupport-devel >= %{qt_ver}
+BuildRequires:	Qt5PrintSupport-devel
+BuildRequires:	Qt5RemoteObjects-devel >= %{qt_ver}
 BuildRequires:	Qt5Qml-devel >= %{qt_ver}
 BuildRequires:	Qt5Quick-devel >= %{qt_ver}
+BuildRequires:	Qt5Quick3D-devel >= %{qt_ver}
 BuildRequires:	Qt5Sensors-devel >= %{qt_ver}
 BuildRequires:	Qt5SerialPort-devel >= %{qt_ver}
 BuildRequires:	Qt5Sql-devel >= %{qt_ver}
