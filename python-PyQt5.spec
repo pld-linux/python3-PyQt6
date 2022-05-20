@@ -363,7 +363,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{py_sitedir}/PyQt5/QtPrintSupport.so
 %attr(755,root,root) %{py_sitedir}/PyQt5/QtQml.so
 %attr(755,root,root) %{py_sitedir}/PyQt5/QtQuick.so
+%attr(755,root,root) %{py_sitedir}/PyQt5/QtQuick3D.so
 %attr(755,root,root) %{py_sitedir}/PyQt5/QtQuickWidgets.so
+%attr(755,root,root) %{py_sitedir}/PyQt5/QtRemoteObjects.so
 %attr(755,root,root) %{py_sitedir}/PyQt5/QtSensors.so
 %attr(755,root,root) %{py_sitedir}/PyQt5/QtSerialPort.so
 %attr(755,root,root) %{py_sitedir}/PyQt5/QtSql.so
@@ -422,7 +424,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{py3_sitedir}/PyQt5/QtPrintSupport.so
 %attr(755,root,root) %{py3_sitedir}/PyQt5/QtQml.so
 %attr(755,root,root) %{py3_sitedir}/PyQt5/QtQuick.so
+%attr(755,root,root) %{py3_sitedir}/PyQt5/QtQuick3D.so
 %attr(755,root,root) %{py3_sitedir}/PyQt5/QtQuickWidgets.so
+%attr(755,root,root) %{py3_sitedir}/PyQt5/QtRemoteObjects.so
 %attr(755,root,root) %{py3_sitedir}/PyQt5/QtSensors.so
 %attr(755,root,root) %{py3_sitedir}/PyQt5/QtSerialPort.so
 %attr(755,root,root) %{py3_sitedir}/PyQt5/QtSql.so
@@ -465,7 +469,9 @@ rm -rf $RPM_BUILD_ROOT
 %{py3_sitedir}/PyQt5/QtPrintSupport.pyi
 %{py3_sitedir}/PyQt5/QtQml.pyi
 %{py3_sitedir}/PyQt5/QtQuick.pyi
+%{py3_sitedir}/PyQt5/QtQuick3D.pyi
 %{py3_sitedir}/PyQt5/QtQuickWidgets.pyi
+%{py3_sitedir}/PyQt5/QtRemoteObjects.pyi
 %{py3_sitedir}/PyQt5/QtSensors.pyi
 %{py3_sitedir}/PyQt5/QtSerialPort.pyi
 %{py3_sitedir}/PyQt5/QtSql.pyi
