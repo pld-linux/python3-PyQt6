@@ -57,6 +57,7 @@ BuildRequires:	Qt5Xml-devel >= %{qt_ver}
 BuildRequires:	Qt5XmlPatterns-devel >= %{qt_ver}
 BuildRequires:	dbus-devel >= 1
 BuildRequires:	pkgconfig
+BuildRequires:	python3-PyQt-builder
 BuildRequires:	python-dbus-devel >= 0.80
 BuildRequires:	python3-dbus >= 0.80
 BuildRequires:	qt5-build >= %{qt_ver}
