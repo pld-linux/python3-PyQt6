@@ -15,7 +15,7 @@ Summary:	Python bindings for the Qt5 toolkit
 Summary(pl.UTF-8):	Wiązania Pythona do toolkitu Qt5
 Name:		python3-%{module}
 Version:	5.15.7
-Release:	1
+Release:	2
 License:	GPL v3
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/PyQt5/
@@ -67,7 +67,7 @@ BuildRequires:	rpmbuild(macros) >= 1.219
 BuildRequires:	sip6 >= %{sip_ver}
 Requires:	python3-dbus >= 0.80
 Requires:	python3-libs
-Obsoletes:	python-PyQt5 < 5.5.17-1
+Obsoletes:	python-PyQt5 < 5.15.7-1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -95,7 +95,7 @@ Group:		Development/Tools
 Requires:	Qt5Core >= %{qt_ver}
 Requires:	Qt5Xml >= %{qt_ver}
 Requires:	%{name} = %{version}-%{release}
-Obsoletes:	python-PyQt5-uic < 5.5.17-1
+Obsoletes:	python-PyQt5-uic < 5.15.7-1
 
 %description uic
 pyuic5 development tool for Python.
@@ -108,7 +108,7 @@ Summary:	PyQt5 development tools
 Summary(pl.UTF-8):	Narzędzia programistyczne PyQt5
 Group:		Development/Tools
 Requires:	python3-PyQt5 = %{version}-%{release}
-Obsoletes:	python-PyQt5-devel-tools < 5.5.17-1
+Obsoletes:	python-PyQt5-devel-tools < 5.15.7-1
 
 %description devel-tools
 PyQt5 development tools: pylupdate5, pyrcc5.
