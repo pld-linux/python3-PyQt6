@@ -66,6 +66,7 @@ BuildRequires:	rpmbuild(macros) >= 1.219
 BuildRequires:	sip6 >= %{sip_ver}
 Requires:	python3-dbus >= 0.80
 Requires:	python3-libs
+Obsoletes:	python-PyQt5 < 5.5.17-1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -93,6 +94,7 @@ Group:		Development/Tools
 Requires:	Qt5Core >= %{qt_ver}
 Requires:	Qt5Xml >= %{qt_ver}
 Requires:	%{name} = %{version}-%{release}
+Obsoletes:	python-PyQt5-uic < 5.5.17-1
 
 %description uic
 pyuic5 development tool for Python.
@@ -105,6 +107,7 @@ Summary:	PyQt5 development tools
 Summary(pl.UTF-8):	Narzędzia programistyczne PyQt5
 Group:		Development/Tools
 Requires:	python3-PyQt5 = %{version}-%{release}
+Obsoletes:	python-PyQt5-devel-tools < 5.5.17-1
 
 %description devel-tools
 PyQt5 development tools: pylupdate5, pyrcc5.
@@ -157,22 +160,6 @@ Ten pakiet zawiera wtyczkę Qt5 Designera zbierającą wszystkie wtyczki
 Pythona, które jest w stanie znaleźć, jako zestaw widgetów dla
 Designera.
 
-%package -n qscintilla2-%{module}-api
-Summary:	PyQt5 API file for QScintilla
-Summary(pl.UTF-8):	Plik API PyQt5 dla QScintilli
-Group:		Libraries/Python
-Requires:	qscintilla2-qt5 >= 2.2-2
-
-%description -n qscintilla2-%{module}-api
-PyQt5 API file can be used by the QScintilla editor component to
-enable the use of auto-completion and call tips when editing PyQt5
-code.
-
-%description -n qscintilla2-%{module}-api -l pl.UTF-8
-Plik API PyQt5 może być używany przez komponent edytora QScintilla aby
-umożliwić automatyczne dopełnianie i podpowiedzi przy modyfikowaniu
-kodu wykorzystującego PyQt5.
-
 %prep
 %setup -q -n PyQt5-%{version}
 
@@ -182,8 +169,10 @@ grep -rl /usr/bin/env examples | xargs sed -i -e '1{
 
 %build
 sip-build --build-dir build-py3 \
+	--jobs %{__jobs} \
 	--verbose \
 	--confirm-license \
+	--pep484-pyi \
 	--qmake="%{_bindir}/qmake-qt5" \
 	--scripts-dir=%{_bindir}
 
@@ -255,6 +244,45 @@ rm -rf $RPM_BUILD_ROOT
 %{py3_sitedir}/PyQt5/pyrcc_main.py
 %{py3_sitedir}/PyQt5/__pycache__
 
+# annotations (-devel?)
+%{py3_sitedir}/PyQt5-%{version}.dist-info
+%{?with_enginio:%{py3_sitedir}/PyQt5/Enginio.pyi}
+%{py3_sitedir}/PyQt5/QtBluetooth.pyi
+%{py3_sitedir}/PyQt5/QtCore.pyi
+%{py3_sitedir}/PyQt5/QtDBus.pyi
+%{py3_sitedir}/PyQt5/QtDesigner.pyi
+%{py3_sitedir}/PyQt5/QtGui.pyi
+%{py3_sitedir}/PyQt5/QtHelp.pyi
+%{py3_sitedir}/PyQt5/QtLocation.pyi
+%{py3_sitedir}/PyQt5/QtMultimedia.pyi
+%{py3_sitedir}/PyQt5/QtMultimediaWidgets.pyi
+%{py3_sitedir}/PyQt5/QtNetwork.pyi
+%{py3_sitedir}/PyQt5/QtNfc.pyi
+%{py3_sitedir}/PyQt5/QtOpenGL.pyi
+%{py3_sitedir}/PyQt5/QtPositioning.pyi
+%{py3_sitedir}/PyQt5/QtPrintSupport.pyi
+%{py3_sitedir}/PyQt5/QtQml.pyi
+%{py3_sitedir}/PyQt5/QtQuick.pyi
+%{py3_sitedir}/PyQt5/QtQuick3D.pyi
+%{py3_sitedir}/PyQt5/QtQuickWidgets.pyi
+%{py3_sitedir}/PyQt5/QtRemoteObjects.pyi
+%{py3_sitedir}/PyQt5/QtSensors.pyi
+%{py3_sitedir}/PyQt5/QtSerialPort.pyi
+%{py3_sitedir}/PyQt5/QtSql.pyi
+%{py3_sitedir}/PyQt5/QtSvg.pyi
+%{py3_sitedir}/PyQt5/QtTest.pyi
+%{py3_sitedir}/PyQt5/QtWebChannel.pyi
+%if %{with webkit}
+%{py3_sitedir}/PyQt5/QtWebKit.pyi
+%{py3_sitedir}/PyQt5/QtWebKitWidgets.pyi
+%endif
+%{py3_sitedir}/PyQt5/QtWebSockets.pyi
+%{py3_sitedir}/PyQt5/QtWidgets.pyi
+%{py3_sitedir}/PyQt5/QtX11Extras.pyi
+%{py3_sitedir}/PyQt5/QtXml.pyi
+%{py3_sitedir}/PyQt5/QtXmlPatterns.pyi
+%{py3_sitedir}/PyQt5/py.typed
+
 %files uic
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/pyuic5
@@ -272,11 +300,8 @@ rm -rf $RPM_BUILD_ROOT
 %files -n sip-PyQt5
 %defattr(644,root,root,755)
 %{py3_sitedir}/PyQt5/bindings
+%{py3_sitedir}/PyQt5/sip.pyi
 
 %files -n Qt5Designer-plugin-pyqt5
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/qt5/plugins/designer/libpyqt5.so
-
-%files -n qscintilla2-%{module}-api
-%defattr(644,root,root,755)
-#%{_datadir}/qt5/qsci/api/python/PyQt5.api
