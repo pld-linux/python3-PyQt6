@@ -47,6 +47,7 @@ BuildRequires:	pkgconfig
 BuildRequires:	python3-PyQt-builder
 BuildRequires:	python-dbus-devel >= 0.80
 BuildRequires:	python3-dbus >= 0.80
+BuildRequires:	python3-devel
 BuildRequires:	qt6-build >= %{qt_ver}
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.219
