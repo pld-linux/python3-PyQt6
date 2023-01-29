@@ -49,6 +49,7 @@ BuildRequires:	python-dbus-devel >= 0.80
 BuildRequires:	python3-dbus >= 0.80
 BuildRequires:	python3-devel
 BuildRequires:	qt6-build >= %{qt_ver}
+BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.219
 BuildRequires:	sip6 >= %{sip_ver}
@@ -109,6 +110,7 @@ Summary:	Examples for PyQt6
 Summary(pl.UTF-8):	Przykłady do PyQt6
 Group:		Libraries/Python
 Requires:	%{name} = %{version}-%{release}
+BuildArch:	noarch
 
 %description examples
 Examples code demonstrating how to use the Python bindings for Qt6.
