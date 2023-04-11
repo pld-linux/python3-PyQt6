@@ -8,7 +8,7 @@ Summary:	Python bindings for the Qt6 toolkit
 Summary(pl.UTF-8):	Wiązania Pythona do toolkitu Qt6
 Name:		python3-%{module}
 Version:	6.5.0
-Release:	1
+Release:	2
 License:	GPL v3
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/PyQt6/
@@ -57,6 +57,8 @@ BuildRequires:	sip6 >= %{sip_ver}
 Requires:	python3-dbus >= 0.80
 Requires:	python3-libs
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define		_enable_debug_packages	0
 
 %description
 PyQt6 is a set of Python bindings for the Qt6 toolkit. The bindings
