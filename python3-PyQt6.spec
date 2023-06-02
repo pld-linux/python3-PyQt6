@@ -27,6 +27,7 @@ BuildRequires:	Qt6MultimediaWidgets-devel >= %{qt_ver}
 BuildRequires:	Qt6Network-devel >= %{qt_ver}
 BuildRequires:	Qt6Nfc-devel >= %{qt_ver}
 BuildRequires:	Qt6OpenGL-devel >= %{qt_ver}
+BuildRequires:	Qt6Positioning-devel >= %{qt_ver}
 BuildRequires:	Qt6PrintSupport-devel
 BuildRequires:	Qt6RemoteObjects-devel >= %{qt_ver}
 BuildRequires:	Qt6Qml-devel >= %{qt_ver}
