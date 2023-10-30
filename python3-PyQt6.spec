@@ -7,13 +7,13 @@
 Summary:	Python bindings for the Qt6 toolkit
 Summary(pl.UTF-8):	Wiązania Pythona do toolkitu Qt6
 Name:		python3-%{module}
-Version:	6.5.2
+Version:	6.6.0
 Release:	1
 License:	GPL v3
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/PyQt6/
 Source0:	https://files.pythonhosted.org/packages/source/P/PyQt6/PyQt6-%{version}.tar.gz
-# Source0-md5:	2615b855c03cbf1454181bae7a5bf833
+# Source0-md5:	322f9c389e53f30c56ea2e85e4ad3d71
 URL:		https://riverbankcomputing.com/software/pyqt/intro
 # most of BR comes from configure.py
 BuildRequires:	Qt6Bluetooth-devel >= %{qt_ver}
@@ -48,15 +48,15 @@ BuildRequires:	pkgconfig
 BuildRequires:	python3-PyQt-builder
 BuildRequires:	python-dbus-devel >= 0.80
 BuildRequires:	python3-dbus >= 0.80
-BuildRequires:	python3-devel
-BuildRequires:	python3-modules
+BuildRequires:	python3-devel >= 1:3.6.1
+BuildRequires:	python3-modules >= 1:3.6.1
 BuildRequires:	qt6-build >= %{qt_ver}
 BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.219
 BuildRequires:	sip6 >= %{sip_ver}
 Requires:	python3-dbus >= 0.80
-Requires:	python3-libs
+Requires:	python3-libs >= 1:3.6.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_enable_debug_packages	0
