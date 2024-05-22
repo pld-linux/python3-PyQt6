@@ -7,13 +7,13 @@
 Summary:	Python bindings for the Qt6 toolkit
 Summary(pl.UTF-8):	Wiązania Pythona do toolkitu Qt6
 Name:		python3-%{module}
-Version:	6.6.1
+Version:	6.7.0
 Release:	1
 License:	GPL v3
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/PyQt6/
 Source0:	https://files.pythonhosted.org/packages/source/P/PyQt6/PyQt6-%{version}.tar.gz
-# Source0-md5:	4b93fcefb54df7fef21dd8be7a5ef79f
+# Source0-md5:	72b58727f6f48aa1b471439d73a02bf2
 URL:		https://riverbankcomputing.com/software/pyqt/intro
 # most of BR comes from configure.py
 BuildRequires:	Qt6Bluetooth-devel >= %{qt_ver}
