@@ -1,19 +1,19 @@
 %define		module	PyQt6
 # minimal required sip version
-%define		sip_ver		6.4
+%define		sip_ver		6.8.6
 # last qt version covered by these bindings (minimal required is currently 5.0.0)
 %define		qt_ver		%{version}
 
 Summary:	Python bindings for the Qt6 toolkit
 Summary(pl.UTF-8):	Wiązania Pythona do toolkitu Qt6
 Name:		python3-%{module}
-Version:	6.7.0
+Version:	6.7.1
 Release:	1
 License:	GPL v3
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/PyQt6/
 Source0:	https://files.pythonhosted.org/packages/source/P/PyQt6/PyQt6-%{version}.tar.gz
-# Source0-md5:	72b58727f6f48aa1b471439d73a02bf2
+# Source0-md5:	96775629fc2ab226d0854c56c81c7f53
 URL:		https://riverbankcomputing.com/software/pyqt/intro
 # most of BR comes from configure.py
 BuildRequires:	Qt6Bluetooth-devel >= %{qt_ver}
