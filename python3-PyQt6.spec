@@ -7,13 +7,13 @@
 Summary:	Python bindings for the Qt6 toolkit
 Summary(pl.UTF-8):	Wiązania Pythona do toolkitu Qt6
 Name:		python3-%{module}
-Version:	6.8.0
+Version:	6.8.1
 Release:	1
 License:	GPL v3
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/PyQt6/
-Source0:	https://files.pythonhosted.org/packages/source/P/PyQt6/PyQt6-%{version}.tar.gz
-# Source0-md5:	cd113aee9158c2dda675ac30f7822e28
+Source0:	https://files.pythonhosted.org/packages/source/p/pyqt6/pyqt6-%{version}.tar.gz
+# Source0-md5:	5dd251f91b34cda91eab1e1c7605d5dd
 URL:		https://riverbankcomputing.com/software/pyqt/intro
 # most of BR comes from configure.py
 BuildRequires:	Qt6Bluetooth-devel >= %{qt_ver}
@@ -151,7 +151,7 @@ Pythona, które jest w stanie znaleźć, jako zestaw widgetów dla
 Designera.
 
 %prep
-%setup -q -n PyQt6-%{version}
+%setup -q -n pyqt6-%{version}
 
 grep -rl /usr/bin/env examples | xargs sed -i -e '1{
 	s,^#!.*bin/env python$,#!%{__python3},
@@ -209,6 +209,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{py3_sitedir}/PyQt6/QtSensors.abi3.so
 %attr(755,root,root) %{py3_sitedir}/PyQt6/QtSerialPort.abi3.so
 %attr(755,root,root) %{py3_sitedir}/PyQt6/QtSql.abi3.so
+%attr(755,root,root) %{py3_sitedir}/PyQt6/QtStateMachine.abi3.so
 %attr(755,root,root) %{py3_sitedir}/PyQt6/QtSvg.abi3.so
 %attr(755,root,root) %{py3_sitedir}/PyQt6/QtSvgWidgets.abi3.so
 %attr(755,root,root) %{py3_sitedir}/PyQt6/QtTest.abi3.so
@@ -244,6 +245,7 @@ rm -rf $RPM_BUILD_ROOT
 %{py3_sitedir}/PyQt6/QtSensors.pyi
 %{py3_sitedir}/PyQt6/QtSerialPort.pyi
 %{py3_sitedir}/PyQt6/QtSql.pyi
+%{py3_sitedir}/PyQt6/QtStateMachine.pyi
 %{py3_sitedir}/PyQt6/QtSvg.pyi
 %{py3_sitedir}/PyQt6/QtSvgWidgets.pyi
 %{py3_sitedir}/PyQt6/QtTest.pyi
