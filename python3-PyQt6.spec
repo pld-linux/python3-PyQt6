@@ -79,6 +79,21 @@ QtPrintSupport, QtQml, QtQuick, QtQuickWidgets, QtSensors,
 QtSerialPort, QtSql, QtSvg, QtTest, QtWebChannel,
 QtWebSockets, QtX11Extras oraz QtXmlPatterns.
 
+%package devel
+Summary:	SIP files needed to build other bindings based on Qt6
+Summary(pl.UTF-8):	Pliki SIP potrzebne do budowania innych wiązań opartych na Qt6
+Group:		Development/Languages/Python
+Requires:	sip6 >= %{sip_ver}
+Obsoletes:	sip-PyQt6 < 6.9.0-2
+
+%description devel
+SIP files needed to build other bindings for C++ classes that inherit
+from any of the Qt6 classes (e.g. KDE or your own).
+
+%description devel -l pl.UTF-8
+Pliki SIP potrzebne do budowania innych wiązań do klas C++
+dziedziczących z dowolnej klasy Qt6 (np. KDE lub własnych).
+
 %package uic
 Summary:	pyuic6 development tool for Python
 Summary(pl.UTF-8):	Narzędzie programistyczne pyuic6 dla Pythona
@@ -121,20 +136,6 @@ Examples code demonstrating how to use the Python bindings for Qt6.
 
 %description examples -l pl.UTF-8
 Przykładowy kod demonstrujący jak używać PyQt6.
-
-%package -n sip-PyQt6
-Summary:	SIP files needed to build other bindings based on Qt6
-Summary(pl.UTF-8):	Pliki SIP potrzebne do budowania innych wiązań opartych na Qt6
-Group:		Development/Languages/Python
-Requires:	sip6 >= %{sip_ver}
-
-%description -n sip-PyQt6
-SIP files needed to build other bindings for C++ classes that inherit
-from any of the Qt6 classes (e.g. KDE or your own).
-
-%description -n sip-PyQt6 -l pl.UTF-8
-Pliki SIP potrzebne do budowania innych wiązań do klas C++
-dziedziczących z dowolnej klasy Qt6 (np. KDE lub własnych).
 
 %package -n Qt6Designer-plugin-pyqt6
 Summary:	Qt6 Designer plugin for Python plugins with widgets
@@ -256,6 +257,11 @@ rm -rf $RPM_BUILD_ROOT
 %{py3_sitedir}/PyQt6/QtXml.pyi
 %{py3_sitedir}/PyQt6/py.typed
 
+%files devel
+%defattr(644,root,root,755)
+%{py3_sitedir}/PyQt6/bindings
+%{py3_sitedir}/PyQt6/sip.pyi
+
 %files uic
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/pyuic6
@@ -269,11 +275,6 @@ rm -rf $RPM_BUILD_ROOT
 %files examples
 %defattr(644,root,root,755)
 %{_examplesdir}/%{name}-%{version}
-
-%files -n sip-PyQt6
-%defattr(644,root,root,755)
-%{py3_sitedir}/PyQt6/bindings
-%{py3_sitedir}/PyQt6/sip.pyi
 
 %files -n Qt6Designer-plugin-pyqt6
 %defattr(644,root,root,755)
