@@ -1,6 +1,6 @@
 %define		module	PyQt6
 # minimal required sip version
-%define		sip_ver		6.8.6
+%define		sip_ver		6.9
 # last qt version covered by these bindings (minimal required is currently 5.0.0)
 %define		qt_ver		%{version}
 
@@ -45,18 +45,18 @@ BuildRequires:	Qt6Widgets-devel >= %{qt_ver}
 BuildRequires:	Qt6Xml-devel >= %{qt_ver}
 BuildRequires:	dbus-devel >= 1
 BuildRequires:	pkgconfig
-BuildRequires:	python3-PyQt-builder
+BuildRequires:	python3-PyQt-builder >= 1.17
 BuildRequires:	python-dbus-devel >= 0.80
 BuildRequires:	python3-dbus >= 0.80
 BuildRequires:	python3-devel >= 1:3.6.1
-BuildRequires:	python3-modules >= 1:3.6.1
+BuildRequires:	python3-modules >= 1:3.9
 BuildRequires:	qt6-build >= %{qt_ver}
 BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.219
 BuildRequires:	sip6 >= %{sip_ver}
 Requires:	python3-dbus >= 0.80
-Requires:	python3-libs >= 1:3.6.1
+Requires:	python3-libs >= 1:3.9
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_enable_debug_packages	0
@@ -184,6 +184,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
+%doc ChangeLog NEWS README.md
 %dir %{_libdir}/qt6/plugins/PyQt6
 %attr(755,root,root) %{_libdir}/qt6/plugins/PyQt6/libpyqt6qmlplugin.so
 %dir %{py3_sitedir}/PyQt6
@@ -220,9 +221,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{py3_sitedir}/dbus/mainloop/pyqt6.abi3.so
 %{py3_sitedir}/PyQt6/__init__.py
 %{py3_sitedir}/PyQt6/__pycache__
+%{py3_sitedir}/pyqt6-%{version}.dist-info
 
 # annotations (-devel?)
-%{py3_sitedir}/PyQt6-%{version}.dist-info
 %{py3_sitedir}/PyQt6/QtBluetooth.pyi
 %{py3_sitedir}/PyQt6/QtCore.pyi
 %{py3_sitedir}/PyQt6/QtDBus.pyi
