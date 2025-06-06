@@ -1,8 +1,17 @@
+#
+# Conditional build:
+%bcond_without	qtpdf	# QtPdf bindings
+
+%ifnarch %{x8664} aarch64
+%undefine	with_qtpdf
+%endif
+
 %define		module	PyQt6
 # minimal required sip version
 %define		sip_ver		6.9
 # last qt version covered by these bindings (minimal required is currently 5.0.0)
-%define		qt_ver		%{version}
+#define		qt_ver		%{version}
+%define		qt_ver		6.8.3
 
 Summary:	Python bindings for the Qt6 toolkit
 Summary(pl.UTF-8):	Wiązania Pythona do toolkitu Qt6
@@ -27,6 +36,9 @@ BuildRequires:	Qt6MultimediaWidgets-devel >= %{qt_ver}
 BuildRequires:	Qt6Network-devel >= %{qt_ver}
 BuildRequires:	Qt6Nfc-devel >= %{qt_ver}
 BuildRequires:	Qt6OpenGL-devel >= %{qt_ver}
+%if %{with qtpdf}
+BuildRequires:	Qt6Pdf-devel >= %{qt_ver}
+%endif
 BuildRequires:	Qt6Positioning-devel >= %{qt_ver}
 BuildRequires:	Qt6PrintSupport-devel
 BuildRequires:	Qt6RemoteObjects-devel >= %{qt_ver}
@@ -68,6 +80,9 @@ Requires:	Qt6MultimediaWidgets >= %{qt_ver}
 Requires:	Qt6Network >= %{qt_ver}
 Requires:	Qt6Nfc >= %{qt_ver}
 Requires:	Qt6OpenGL >= %{qt_ver}
+%if %{with qtpdf}
+Requires:	Qt6Pdf >= %{qt_ver}
+%endif
 Requires:	Qt6Positioning >= %{qt_ver}
 Requires:	Qt6PrintSupport
 Requires:	Qt6RemoteObjects >= %{qt_ver}
@@ -232,6 +247,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{py3_sitedir}/PyQt6/QtNfc.abi3.so
 %attr(755,root,root) %{py3_sitedir}/PyQt6/QtOpenGL.abi3.so
 %attr(755,root,root) %{py3_sitedir}/PyQt6/QtOpenGLWidgets.abi3.so
+%if %{with qtpdf}
+%attr(755,root,root) %{py3_sitedir}/PyQt6/QtPdf.abi3.so
+%attr(755,root,root) %{py3_sitedir}/PyQt6/QtPdfWidgets.abi3.so
+%endif
 %attr(755,root,root) %{py3_sitedir}/PyQt6/QtPositioning.abi3.so
 %attr(755,root,root) %{py3_sitedir}/PyQt6/QtPrintSupport.abi3.so
 %attr(755,root,root) %{py3_sitedir}/PyQt6/QtQml.abi3.so
@@ -270,6 +289,10 @@ rm -rf $RPM_BUILD_ROOT
 %{py3_sitedir}/PyQt6/QtNfc.pyi
 %{py3_sitedir}/PyQt6/QtOpenGL.pyi
 %{py3_sitedir}/PyQt6/QtOpenGLWidgets.pyi
+%if %{with qtpdf}
+%{py3_sitedir}/PyQt6/QtPdf.pyi
+%{py3_sitedir}/PyQt6/QtPdfWidgets.pyi
+%endif
 %{py3_sitedir}/PyQt6/QtPositioning.pyi
 %{py3_sitedir}/PyQt6/QtPrintSupport.pyi
 %{py3_sitedir}/PyQt6/QtQml.pyi
