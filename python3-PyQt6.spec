@@ -35,9 +35,11 @@ BuildRequires:	Qt6Quick-devel >= %{qt_ver}
 BuildRequires:	Qt6Quick3D-devel >= %{qt_ver}
 BuildRequires:	Qt6Sensors-devel >= %{qt_ver}
 BuildRequires:	Qt6SerialPort-devel >= %{qt_ver}
+BuildRequires:	Qt6SpatialAudio-devel >= %{qt_ver}
 BuildRequires:	Qt6Sql-devel >= %{qt_ver}
 BuildRequires:	Qt6Svg-devel >= %{qt_ver}
 BuildRequires:	Qt6Test-devel >= %{qt_ver}
+BuildRequires:	Qt6TextToSpeech-devel >= %{qt_ver}
 BuildRequires:	Qt6UiTools-devel >= %{qt_ver}
 BuildRequires:	Qt6WebChannel-devel >= %{qt_ver}
 BuildRequires:	Qt6WebSockets-devel >= %{qt_ver}
@@ -55,6 +57,35 @@ BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.219
 BuildRequires:	sip6 >= %{sip_ver}
+Requires:	Qt6Bluetooth >= %{qt_ver}
+Requires:	Qt6Core >= %{qt_ver}
+Requires:	Qt6DBus >= %{qt_ver}
+Requires:	Qt6Designer >= %{qt_ver}
+Requires:	Qt6Gui >= %{qt_ver}
+Requires:	Qt6Help >= %{qt_ver}
+Requires:	Qt6Multimedia >= %{qt_ver}
+Requires:	Qt6MultimediaWidgets >= %{qt_ver}
+Requires:	Qt6Network >= %{qt_ver}
+Requires:	Qt6Nfc >= %{qt_ver}
+Requires:	Qt6OpenGL >= %{qt_ver}
+Requires:	Qt6Positioning >= %{qt_ver}
+Requires:	Qt6PrintSupport
+Requires:	Qt6RemoteObjects >= %{qt_ver}
+Requires:	Qt6Qml >= %{qt_ver}
+Requires:	Qt6Quick >= %{qt_ver}
+Requires:	Qt6Quick3D >= %{qt_ver}
+Requires:	Qt6Sensors >= %{qt_ver}
+Requires:	Qt6SerialPort >= %{qt_ver}
+Requires:	Qt6SpatialAudio >= %{qt_ver}
+Requires:	Qt6Sql >= %{qt_ver}
+Requires:	Qt6Svg >= %{qt_ver}
+Requires:	Qt6Test >= %{qt_ver}
+Requires:	Qt6TextToSpeech >= %{qt_ver}
+Requires:	Qt6UiTools >= %{qt_ver}
+Requires:	Qt6WebChannel >= %{qt_ver}
+Requires:	Qt6WebSockets >= %{qt_ver}
+Requires:	Qt6Widgets >= %{qt_ver}
+Requires:	Qt6Xml >= %{qt_ver}
 Requires:	python3-dbus >= 0.80
 Requires:	python3-libs >= 1:3.9
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -210,11 +241,13 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{py3_sitedir}/PyQt6/QtRemoteObjects.abi3.so
 %attr(755,root,root) %{py3_sitedir}/PyQt6/QtSensors.abi3.so
 %attr(755,root,root) %{py3_sitedir}/PyQt6/QtSerialPort.abi3.so
+%attr(755,root,root) %{py3_sitedir}/PyQt6/QtSpatialAudio.abi3.so
 %attr(755,root,root) %{py3_sitedir}/PyQt6/QtSql.abi3.so
 %attr(755,root,root) %{py3_sitedir}/PyQt6/QtStateMachine.abi3.so
 %attr(755,root,root) %{py3_sitedir}/PyQt6/QtSvg.abi3.so
 %attr(755,root,root) %{py3_sitedir}/PyQt6/QtSvgWidgets.abi3.so
 %attr(755,root,root) %{py3_sitedir}/PyQt6/QtTest.abi3.so
+%attr(755,root,root) %{py3_sitedir}/PyQt6/QtTextToSpeech.abi3.so
 %attr(755,root,root) %{py3_sitedir}/PyQt6/QtWebChannel.abi3.so
 %attr(755,root,root) %{py3_sitedir}/PyQt6/QtWebSockets.abi3.so
 %attr(755,root,root) %{py3_sitedir}/PyQt6/QtWidgets.abi3.so
@@ -246,11 +279,13 @@ rm -rf $RPM_BUILD_ROOT
 %{py3_sitedir}/PyQt6/QtRemoteObjects.pyi
 %{py3_sitedir}/PyQt6/QtSensors.pyi
 %{py3_sitedir}/PyQt6/QtSerialPort.pyi
+%{py3_sitedir}/PyQt6/QtSpatialAudio.pyi
 %{py3_sitedir}/PyQt6/QtSql.pyi
 %{py3_sitedir}/PyQt6/QtStateMachine.pyi
 %{py3_sitedir}/PyQt6/QtSvg.pyi
 %{py3_sitedir}/PyQt6/QtSvgWidgets.pyi
 %{py3_sitedir}/PyQt6/QtTest.pyi
+%{py3_sitedir}/PyQt6/QtTextToSpeech.pyi
 %{py3_sitedir}/PyQt6/QtWebChannel.pyi
 %{py3_sitedir}/PyQt6/QtWebSockets.pyi
 %{py3_sitedir}/PyQt6/QtWidgets.pyi
