@@ -10,8 +10,7 @@
 # minimal required sip version
 %define		sip_ver		6.9
 # last qt version covered by these bindings (minimal required is currently 5.0.0)
-#define		qt_ver		%{version}
-%define		qt_ver		6.8.3
+%define		qt_ver		%{version}
 
 Summary:	Python bindings for the Qt6 toolkit
 Summary(pl.UTF-8):	Wiązania Pythona do toolkitu Qt6
