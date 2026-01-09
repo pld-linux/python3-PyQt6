@@ -8,20 +8,20 @@
 
 %define		module	PyQt6
 # minimal required sip version
-%define		sip_ver		6.9
-# last qt version covered by these bindings (minimal required is currently 5.0.0)
-%define		qt_ver		%{version}
+%define		sip_ver		6.13.1
+# last qt version covered by these bindings
+%define		qt_ver		6.0.0
 
 Summary:	Python bindings for the Qt6 toolkit
 Summary(pl.UTF-8):	Wiązania Pythona do toolkitu Qt6
 Name:		python3-%{module}
-Version:	6.10.1
+Version:	6.10.2
 Release:	1
 License:	GPL v3
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/PyQt6/
 Source0:	https://files.pythonhosted.org/packages/source/p/pyqt6/pyqt6-%{version}.tar.gz
-# Source0-md5:	5692f6003bce7e78f9c83e2b90e3f49b
+# Source0-md5:	5d5e388942c551e19010f1d0b1ee0966
 URL:		https://riverbankcomputing.com/software/pyqt/intro
 # most of BR comes from configure.py
 BuildRequires:	Qt6Bluetooth-devel >= %{qt_ver}
@@ -58,48 +58,48 @@ BuildRequires:	Qt6Widgets-devel >= %{qt_ver}
 BuildRequires:	Qt6Xml-devel >= %{qt_ver}
 BuildRequires:	dbus-devel >= 1
 BuildRequires:	pkgconfig
-BuildRequires:	python3-PyQt-builder >= 1.17
+BuildRequires:	python3-PyQt-builder >= 1.19
 BuildRequires:	python-dbus-devel >= 0.80
 BuildRequires:	python3-dbus >= 0.80
-BuildRequires:	python3-devel >= 1:3.6.1
+BuildRequires:	python3-devel >= 1:3.9
 BuildRequires:	python3-modules >= 1:3.9
 BuildRequires:	qt6-build >= %{qt_ver}
 BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.219
 BuildRequires:	sip6 >= %{sip_ver}
-Requires:	Qt6Bluetooth >= %{qt_ver}
-Requires:	Qt6Core >= %{qt_ver}
-Requires:	Qt6DBus >= %{qt_ver}
-Requires:	Qt6Designer >= %{qt_ver}
-Requires:	Qt6Gui >= %{qt_ver}
-Requires:	Qt6Help >= %{qt_ver}
-Requires:	Qt6Multimedia >= %{qt_ver}
-Requires:	Qt6MultimediaWidgets >= %{qt_ver}
-Requires:	Qt6Network >= %{qt_ver}
-Requires:	Qt6Nfc >= %{qt_ver}
-Requires:	Qt6OpenGL >= %{qt_ver}
+%requires_eq_to	Qt6Bluetooth Qt6Bluetooth-devel
+%requires_eq_to	Qt6Core Qt6Core-devel
+%requires_eq_to	Qt6DBus Qt6DBus-devel
+%requires_eq_to	Qt6Designer Qt6Designer-devel
+%requires_eq_to	Qt6Gui Qt6Gui-devel
+%requires_eq_to	Qt6Help Qt6Help-devel
+%requires_eq_to	Qt6Multimedia Qt6Multimedia-devel
+%requires_eq_to	Qt6MultimediaWidgets Qt6MultimediaWidgets-devel
+%requires_eq_to	Qt6Network Qt6Network-devel
+%requires_eq_to	Qt6Nfc Qt6Nfc-devel
+%requires_eq_to	Qt6OpenGL Qt6OpenGL-devel
 %if %{with qtpdf}
-Requires:	Qt6Pdf >= %{qt_ver}
+%requires_eq_to	Qt6Pdf Qt6Pdf-devel
 %endif
-Requires:	Qt6Positioning >= %{qt_ver}
-Requires:	Qt6PrintSupport
-Requires:	Qt6RemoteObjects >= %{qt_ver}
-Requires:	Qt6Qml >= %{qt_ver}
-Requires:	Qt6Quick >= %{qt_ver}
-Requires:	Qt6Quick3D >= %{qt_ver}
-Requires:	Qt6Sensors >= %{qt_ver}
-Requires:	Qt6SerialPort >= %{qt_ver}
-Requires:	Qt6SpatialAudio >= %{qt_ver}
-Requires:	Qt6Sql >= %{qt_ver}
-Requires:	Qt6Svg >= %{qt_ver}
-Requires:	Qt6Test >= %{qt_ver}
-Requires:	Qt6TextToSpeech >= %{qt_ver}
-Requires:	Qt6UiTools >= %{qt_ver}
-Requires:	Qt6WebChannel >= %{qt_ver}
-Requires:	Qt6WebSockets >= %{qt_ver}
-Requires:	Qt6Widgets >= %{qt_ver}
-Requires:	Qt6Xml >= %{qt_ver}
+%requires_eq_to	Qt6Positioning Qt6Positioning-devel
+%requires_eq_to	Qt6PrintSupport Qt6PrintSupport-devel
+%requires_eq_to	Qt6RemoteObjects Qt6RemoteObjects-devel
+%requires_eq_to	Qt6Qml Qt6Qml-devel
+%requires_eq_to	Qt6Quick Qt6Quick-devel
+%requires_eq_to	Qt6Quick3D Qt6Quick3D-devel
+%requires_eq_to	Qt6Sensors Qt6Sensors-devel
+%requires_eq_to	Qt6SerialPort Qt6SerialPort-devel
+%requires_eq_to	Qt6SpatialAudio Qt6SpatialAudio-devel
+%requires_eq_to	Qt6Sql Qt6Sql-devel
+%requires_eq_to	Qt6Svg Qt6Svg-devel
+%requires_eq_to	Qt6Test Qt6Test-devel
+%requires_eq_to	Qt6TextToSpeech Qt6TextToSpeech-devel
+%requires_eq_to	Qt6UiTools Qt6UiTools-devel
+%requires_eq_to	Qt6WebChannel Qt6WebChannel-devel
+%requires_eq_to	Qt6WebSockets Qt6WebSockets-devel
+%requires_eq_to	Qt6Widgets Qt6Widgets-devel
+%requires_eq_to	Qt6Xml Qt6Xml-devel
 Requires:	python3-dbus >= 0.80
 Requires:	python3-libs >= 1:3.9
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
